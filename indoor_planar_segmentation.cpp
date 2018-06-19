@@ -3,9 +3,9 @@ General Sequential Methodolody:
 1) input source pcd file
 2) Mophological Filtering
 3) Planar detection/ Segmentation
-4) Classification of planes
+4) Classification of planes (ceilings, floor, wall, curbs)
 5) Visualize Point Cloud
-
+6) Grouping of point clouds
 */
 
 #include <iostream>
@@ -179,7 +179,6 @@ main (int argc, char** argv)
   viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "source_cloud");
 
   viewer.addText("Poincloud Plane Segmentation", 100, 10, "text1");
-
 
   // //viewer.setPosition(800, 400); // Setting visualiser window position
 

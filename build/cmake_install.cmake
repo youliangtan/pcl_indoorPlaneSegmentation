@@ -1,4 +1,4 @@
-# Install script for directory: /home/tan/pcd_test2
+# Install script for directory: /home/pictobot/pcl_indoorPlaneSegmentation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tan/pcd_test2/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pictobot/pcl_indoorPlaneSegmentation/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

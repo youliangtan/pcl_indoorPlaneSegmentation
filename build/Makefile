@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tan/pcd_test2
+CMAKE_SOURCE_DIR = /home/pictobot/pcl_indoorPlaneSegmentation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tan/pcd_test2/build
+CMAKE_BINARY_DIR = /home/pictobot/pcl_indoorPlaneSegmentation/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -78,11 +67,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tan/pcd_test2/build/CMakeFiles /home/tan/pcd_test2/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles /home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tan/pcd_test2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named planar_segmentation
+# Target rules for targets named indoor_planar_segmentation
 
 # Build rule for target.
-planar_segmentation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 planar_segmentation
-.PHONY : planar_segmentation
+indoor_planar_segmentation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 indoor_planar_segmentation
+.PHONY : indoor_planar_segmentation
 
 # fast build rule for target.
-planar_segmentation/fast:
-	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/build
-.PHONY : planar_segmentation/fast
+indoor_planar_segmentation/fast:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
+.PHONY : indoor_planar_segmentation/fast
+
+#=============================================================================
+# Target rules for targets named concave_hull_2d
+
+# Build rule for target.
+concave_hull_2d: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 concave_hull_2d
+.PHONY : concave_hull_2d
+
+# fast build rule for target.
+concave_hull_2d/fast:
+	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/build
+.PHONY : concave_hull_2d/fast
 
 #=============================================================================
 # Target rules for targets named pc_visualizer
@@ -137,17 +150,44 @@ pc_visualizer/fast:
 .PHONY : pc_visualizer/fast
 
 #=============================================================================
-# Target rules for targets named indoor_planar_segmentation
+# Target rules for targets named planar_segmentation
 
 # Build rule for target.
-indoor_planar_segmentation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 indoor_planar_segmentation
-.PHONY : indoor_planar_segmentation
+planar_segmentation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 planar_segmentation
+.PHONY : planar_segmentation
 
 # fast build rule for target.
-indoor_planar_segmentation/fast:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
-.PHONY : indoor_planar_segmentation/fast
+planar_segmentation/fast:
+	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/build
+.PHONY : planar_segmentation/fast
+
+concave_hull_2d.o: concave_hull_2d.cpp.o
+
+.PHONY : concave_hull_2d.o
+
+# target to build an object file
+concave_hull_2d.cpp.o:
+	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.o
+.PHONY : concave_hull_2d.cpp.o
+
+concave_hull_2d.i: concave_hull_2d.cpp.i
+
+.PHONY : concave_hull_2d.i
+
+# target to preprocess a source file
+concave_hull_2d.cpp.i:
+	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.i
+.PHONY : concave_hull_2d.cpp.i
+
+concave_hull_2d.s: concave_hull_2d.cpp.s
+
+.PHONY : concave_hull_2d.s
+
+# target to generate assembly for a file
+concave_hull_2d.cpp.s:
+	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.s
+.PHONY : concave_hull_2d.cpp.s
 
 indoor_planar_segmentation.o: indoor_planar_segmentation.cpp.o
 
@@ -236,11 +276,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... planar_segmentation"
-	@echo "... pc_visualizer"
+	@echo "... edit_cache"
 	@echo "... indoor_planar_segmentation"
+	@echo "... concave_hull_2d"
+	@echo "... pc_visualizer"
+	@echo "... planar_segmentation"
+	@echo "... concave_hull_2d.o"
+	@echo "... concave_hull_2d.i"
+	@echo "... concave_hull_2d.s"
 	@echo "... indoor_planar_segmentation.o"
 	@echo "... indoor_planar_segmentation.i"
 	@echo "... indoor_planar_segmentation.s"

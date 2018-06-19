@@ -24,6 +24,14 @@ int main (int argc, char** argv)
     return 0;
   }
 
+  //get arg point size
+  int pointSize = 5; //default
+  if (pcl::console::find_switch (argc, argv, "-s")){
+    int input_idx = pcl::console::find_argument (argc, argv, "-s") + 1;
+    pointSize = std::atoi(argv[input_idx]);
+    std::cout << "Input Int arg for '-s' is " << pointSize << std::endl;
+  } 
+
   // Fetch point cloud filename in arguments | Works with PCD and PLY files
   std::vector<int> filenames;
   bool file_is_pcd = true;
@@ -71,12 +79,13 @@ int main (int argc, char** argv)
   // Visualization
   pcl::visualization::PCLVisualizer viewer ("PC visualizer");
 
-  pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> source_cloud_color_handler (source_cloud, 23, 150, 23);
+  pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> source_cloud_color_handler (source_cloud, 250, 23, 23);
   viewer.addPointCloud (source_cloud, source_cloud_color_handler, "original_cloud");
-  viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 5, "original_cloud");
+  viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, pointSize, "original_cloud");
 
   // pointcloud 2
   if (filenames.size() == 2){
+    std::cout << "[ Point Cloud 2 ] Visualizing" << std::endl;
     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> source_cloud_color_handler2 (source_cloud2, 23, 255, 255);
     viewer.addPointCloud (source_cloud2, source_cloud_color_handler2, "original_cloud2");
     viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "original_cloud2");
