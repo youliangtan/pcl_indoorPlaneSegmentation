@@ -367,6 +367,8 @@ CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/search/organized.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/search/pcl_search.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/search/search.h
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/segmentation/extract_clusters.h
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/segmentation/impl/extract_clusters.hpp
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/segmentation/impl/sac_segmentation.hpp
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/segmentation/sac_segmentation.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/visualization/area_picking_event.h

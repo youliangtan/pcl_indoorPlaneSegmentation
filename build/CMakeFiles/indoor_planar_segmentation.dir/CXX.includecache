@@ -39,6 +39,10 @@ pcl/filters/extract_indices.h
 -
 pcl/filters/statistical_outlier_removal.h
 -
+pcl/segmentation/extract_clusters.h
+-
+pcl/kdtree/kdtree.h
+-
 
 /usr/local/include/eigen3/Eigen/Cholesky
 Core
@@ -2514,6 +2518,18 @@ pcl/common/concatenate.h
 pcl/common/copy_point.h
 -
 pcl/search/impl/search.hpp
+-
+
+/usr/local/include/pcl-1.8/pcl/segmentation/extract_clusters.h
+pcl/pcl_base.h
+-
+pcl/search/pcl_search.h
+-
+pcl/segmentation/impl/extract_clusters.hpp
+-
+
+/usr/local/include/pcl-1.8/pcl/segmentation/impl/extract_clusters.hpp
+pcl/segmentation/extract_clusters.h
 -
 
 /usr/local/include/pcl-1.8/pcl/segmentation/impl/sac_segmentation.hpp
