@@ -266,6 +266,10 @@ CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
  /usr/local/include/pcl-1.8/pcl/conversions.h
  /usr/local/include/pcl-1.8/pcl/correspondence.h
  /usr/local/include/pcl-1.8/pcl/exceptions.h
+ /usr/local/include/pcl-1.8/pcl/features/feature.h
+ /usr/local/include/pcl-1.8/pcl/features/impl/feature.hpp
+ /usr/local/include/pcl-1.8/pcl/features/impl/normal_3d.hpp
+ /usr/local/include/pcl-1.8/pcl/features/normal_3d.h
  /usr/local/include/pcl-1.8/pcl/filters/boost.h
  /usr/local/include/pcl-1.8/pcl/filters/extract_indices.h
  /usr/local/include/pcl-1.8/pcl/filters/filter.h

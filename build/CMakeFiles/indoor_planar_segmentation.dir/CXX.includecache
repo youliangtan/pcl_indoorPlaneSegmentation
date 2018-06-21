@@ -43,6 +43,8 @@ pcl/segmentation/extract_clusters.h
 -
 pcl/kdtree/kdtree.h
 -
+pcl/features/normal_3d.h
+-
 
 /usr/local/include/eigen3/Eigen/Cholesky
 Core
@@ -1502,6 +1504,34 @@ sstream
 pcl/pcl_macros.h
 -
 boost/current_function.hpp
+-
+
+/usr/local/include/pcl-1.8/pcl/features/feature.h
+boost/function.hpp
+-
+boost/bind.hpp
+-
+pcl/pcl_base.h
+-
+pcl/search/search.h
+-
+pcl/features/impl/feature.hpp
+-
+
+/usr/local/include/pcl-1.8/pcl/features/impl/feature.hpp
+pcl/search/pcl_search.h
+-
+
+/usr/local/include/pcl-1.8/pcl/features/impl/normal_3d.hpp
+pcl/features/normal_3d.h
+-
+
+/usr/local/include/pcl-1.8/pcl/features/normal_3d.h
+pcl/features/feature.h
+-
+pcl/common/centroid.h
+-
+pcl/features/impl/normal_3d.hpp
 -
 
 /usr/local/include/pcl-1.8/pcl/filters/boost.h

@@ -265,6 +265,10 @@ CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/conversions.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/correspondence.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/exceptions.h
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/features/feature.h
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/features/impl/feature.hpp
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/features/impl/normal_3d.hpp
+CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/features/normal_3d.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/filters/boost.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/filters/extract_indices.h
 CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: /usr/local/include/pcl-1.8/pcl/filters/filter.h
