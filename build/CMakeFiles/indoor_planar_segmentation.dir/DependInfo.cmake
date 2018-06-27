@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.o"
   "/home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -35,6 +36,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/pcl-1.8"
   "/usr/local/include/eigen3"
   "/usr/include/ni"
+  "../include"
   "/usr/local/include"
   )
 

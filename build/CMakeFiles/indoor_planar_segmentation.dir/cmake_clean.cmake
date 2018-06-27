@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o"
+  "CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.o"
   "indoor_planar_segmentation.pdb"
   "indoor_planar_segmentation"
 )

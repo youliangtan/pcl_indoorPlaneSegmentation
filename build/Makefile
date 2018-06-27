@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pictobot/pcl_indoorPlaneSegmentation/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -123,71 +123,32 @@ indoor_planar_segmentation/fast:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
 .PHONY : indoor_planar_segmentation/fast
 
-#=============================================================================
-# Target rules for targets named concave_hull_2d
+getPlaneNormalState.o: getPlaneNormalState.cpp.o
 
-# Build rule for target.
-concave_hull_2d: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 concave_hull_2d
-.PHONY : concave_hull_2d
-
-# fast build rule for target.
-concave_hull_2d/fast:
-	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/build
-.PHONY : concave_hull_2d/fast
-
-#=============================================================================
-# Target rules for targets named pc_visualizer
-
-# Build rule for target.
-pc_visualizer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pc_visualizer
-.PHONY : pc_visualizer
-
-# fast build rule for target.
-pc_visualizer/fast:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/build
-.PHONY : pc_visualizer/fast
-
-#=============================================================================
-# Target rules for targets named planar_segmentation
-
-# Build rule for target.
-planar_segmentation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 planar_segmentation
-.PHONY : planar_segmentation
-
-# fast build rule for target.
-planar_segmentation/fast:
-	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/build
-.PHONY : planar_segmentation/fast
-
-concave_hull_2d.o: concave_hull_2d.cpp.o
-
-.PHONY : concave_hull_2d.o
+.PHONY : getPlaneNormalState.o
 
 # target to build an object file
-concave_hull_2d.cpp.o:
-	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.o
-.PHONY : concave_hull_2d.cpp.o
+getPlaneNormalState.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.o
+.PHONY : getPlaneNormalState.cpp.o
 
-concave_hull_2d.i: concave_hull_2d.cpp.i
+getPlaneNormalState.i: getPlaneNormalState.cpp.i
 
-.PHONY : concave_hull_2d.i
+.PHONY : getPlaneNormalState.i
 
 # target to preprocess a source file
-concave_hull_2d.cpp.i:
-	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.i
-.PHONY : concave_hull_2d.cpp.i
+getPlaneNormalState.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.i
+.PHONY : getPlaneNormalState.cpp.i
 
-concave_hull_2d.s: concave_hull_2d.cpp.s
+getPlaneNormalState.s: getPlaneNormalState.cpp.s
 
-.PHONY : concave_hull_2d.s
+.PHONY : getPlaneNormalState.s
 
 # target to generate assembly for a file
-concave_hull_2d.cpp.s:
-	$(MAKE) -f CMakeFiles/concave_hull_2d.dir/build.make CMakeFiles/concave_hull_2d.dir/concave_hull_2d.cpp.s
-.PHONY : concave_hull_2d.cpp.s
+getPlaneNormalState.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.s
+.PHONY : getPlaneNormalState.cpp.s
 
 indoor_planar_segmentation.o: indoor_planar_segmentation.cpp.o
 
@@ -216,84 +177,21 @@ indoor_planar_segmentation.cpp.s:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
 .PHONY : indoor_planar_segmentation.cpp.s
 
-pc_visualizer.o: pc_visualizer.cpp.o
-
-.PHONY : pc_visualizer.o
-
-# target to build an object file
-pc_visualizer.cpp.o:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o
-.PHONY : pc_visualizer.cpp.o
-
-pc_visualizer.i: pc_visualizer.cpp.i
-
-.PHONY : pc_visualizer.i
-
-# target to preprocess a source file
-pc_visualizer.cpp.i:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i
-.PHONY : pc_visualizer.cpp.i
-
-pc_visualizer.s: pc_visualizer.cpp.s
-
-.PHONY : pc_visualizer.s
-
-# target to generate assembly for a file
-pc_visualizer.cpp.s:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s
-.PHONY : pc_visualizer.cpp.s
-
-planar_segmentation.o: planar_segmentation.cpp.o
-
-.PHONY : planar_segmentation.o
-
-# target to build an object file
-planar_segmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/planar_segmentation.cpp.o
-.PHONY : planar_segmentation.cpp.o
-
-planar_segmentation.i: planar_segmentation.cpp.i
-
-.PHONY : planar_segmentation.i
-
-# target to preprocess a source file
-planar_segmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/planar_segmentation.cpp.i
-.PHONY : planar_segmentation.cpp.i
-
-planar_segmentation.s: planar_segmentation.cpp.s
-
-.PHONY : planar_segmentation.s
-
-# target to generate assembly for a file
-planar_segmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/planar_segmentation.dir/build.make CMakeFiles/planar_segmentation.dir/planar_segmentation.cpp.s
-.PHONY : planar_segmentation.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... indoor_planar_segmentation"
-	@echo "... concave_hull_2d"
-	@echo "... pc_visualizer"
-	@echo "... planar_segmentation"
-	@echo "... concave_hull_2d.o"
-	@echo "... concave_hull_2d.i"
-	@echo "... concave_hull_2d.s"
+	@echo "... rebuild_cache"
+	@echo "... getPlaneNormalState.o"
+	@echo "... getPlaneNormalState.i"
+	@echo "... getPlaneNormalState.s"
 	@echo "... indoor_planar_segmentation.o"
 	@echo "... indoor_planar_segmentation.i"
 	@echo "... indoor_planar_segmentation.s"
-	@echo "... pc_visualizer.o"
-	@echo "... pc_visualizer.i"
-	@echo "... pc_visualizer.s"
-	@echo "... planar_segmentation.o"
-	@echo "... planar_segmentation.i"
-	@echo "... planar_segmentation.s"
 .PHONY : help
 
 

@@ -25,6 +25,9 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "core": "cpp",
-        "numericaldiff": "cpp"
+        "numericaldiff": "cpp",
+        "slist": "cpp",
+        "*.tcc": "cpp",
+        "iostream": "cpp"
     }
 }

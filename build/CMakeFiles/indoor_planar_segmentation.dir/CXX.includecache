@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../include/getPlaneNormalState.h
+pcl/io/pcd_io.h
+-
+pcl/features/normal_3d.h
+-
+
+/home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.cpp
+getPlaneNormalState.h
+/home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.h
+
 /home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp
 iostream
 -
@@ -45,6 +55,8 @@ pcl/kdtree/kdtree.h
 -
 pcl/features/normal_3d.h
 -
+getPlaneNormalState.h
+/home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.h
 
 /usr/local/include/eigen3/Eigen/Cholesky
 Core

@@ -12,6 +12,7 @@ void showHelp(char * program_name)
 {
   std::cout << std::endl;
   std::cout << "Usage: " << program_name << " cloud_filename.[pcd|ply]" << std::endl;
+  std::cout << "-s:  for size changes." << std::endl;
   std::cout << "-h:  Show this help." << std::endl;
 }
 

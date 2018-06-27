@@ -27,15 +27,20 @@ General Sequential Methodolody:
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/kdtree/kdtree.h>
 #include <pcl/features/normal_3d.h>
+#include "getPlaneNormalState.h"
 
 
 // global
-int inputInt = 30; //default
 pcl::visualization::PCLVisualizer viewer ("Segmention Visualization");
+pcl::PCDWriter writer;
+int input_idx =0;
+int inputInt = 30; //default
 int v1 = 1;
 int v2 = 2;
-double input_d = 0.1;
+double input_d = 0.5;
 double input_d2 = 2.0;
+double ransacDist = 0.02;
+
 
 // This function displays the help
 void
@@ -43,24 +48,9 @@ showHelp(char * program_name)
 {
   std::cout << std::endl;
   std::cout << "Usage: " << program_name << " cloud_filename.[pcd|ply]" << std::endl;
+  std::cout << "-r:  ransac distance." << std::endl;
   std::cout << "-h:  Show this help." << std::endl;
 }
-
-
-// get average vector of plane normal
-int getAverageVector(pcl::PointCloud<pcl::Normal>::Ptr normals, pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals, int idx){
-  int step = 10;
-  int count =0;
-  for (size_t i = 0; i < normals->points.size (); i += step){
-    planes_avgNormals->points[idx].normal_x += normals->points[i].normal_x;
-    planes_avgNormals->points[idx].normal_y += normals->points[i].normal_y;
-    planes_avgNormals->points[idx].normal_z += normals->points[i].normal_z;
-    count++;
-  } 
-  planes_avgNormals->points[idx].normal_x = planes_avgNormals->points[idx].normal_x/count;
-  planes_avgNormals->points[idx].normal_y = planes_avgNormals->points[idx].normal_y/count;
-  planes_avgNormals->points[idx].normal_z = planes_avgNormals->points[idx].normal_z/count;
-} 
 
 
 
@@ -85,11 +75,17 @@ std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::
   ne.compute (*cloud_normals);
 
   //find all plane normal vector and output
-  getAverageVector(cloud_normals, planes_avgNormals, index);
-  pcl::PCDWriter writer;
+  getAverageNormal(cloud_normals, planes_avgNormals, index);
   // writer.write<pcl::Normal> ("normal_vector.pcd", *cloud_normals, false);
-  writer.write<pcl::Normal> ("plane_normal_vector.pcd", *planes_avgNormals, false);
-  std::cout << " - [MAIN] Avg normal Vector  " << planes_avgNormals->points[0] << std::endl;
+  std::cout << "avg at func" << planes_avgNormals->points[index] <<std::endl;
+  std::cout << " - [Avg normal] Vector  " << planes_avgNormals->points[index] << std::endl;
+
+  //check cluster index via output
+  // if (index == 6){
+  //   writer.write<pcl::PointXYZ> ("./pcd/output_cluster.pcd", *plane_cloud, false);
+  //   viewer.addPointCloudNormals<pcl::PointXYZ, pcl::Normal> (plane_cloud, cloud_normals, 15, 0.28, "normals");
+  // }      
+
 
   // return appropriate state
   float z_vector = planes_avgNormals->points[index].normal_z;
@@ -112,7 +108,6 @@ std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::
 int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
  
   // var and init
-  int thresh = source_cloud->points.size()*0.05;
   pcl::PointCloud<pcl::PointXYZ>::Ptr planar_cloud(new pcl::PointCloud<pcl::PointXYZ>);
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
@@ -126,10 +121,8 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
   pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
   seg.setModelType (pcl::SACMODEL_PLANE);
   seg.setMethodType (pcl::SAC_RANSAC);
-  seg.setDistanceThreshold (0.05);
+  seg.setDistanceThreshold (ransacDist);
   seg.setOptimizeCoefficients (true);    // Optional
-  seg.setInputCloud (source_cloud);
-  seg.segment (*inliers, *coefficients);
 
   // Create the filtering to remove sparse points
   pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
@@ -137,12 +130,11 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
   sor.setMeanK (inputInt);
   sor.setStddevMulThresh (input_d2);
   sor.filter (*cloud_filtered);
-  writer.write<pcl::PointXYZ> ("SOR_filtered.pcd", *cloud_filtered, false);
 
   // Create Cluster init
   // Creating the KdTree object for the search method of the extraction
   pcl::EuclideanClusterExtraction<pcl::PointXYZ> ec;
-  ec.setClusterTolerance (input_d); // 10cm
+  ec.setClusterTolerance (0.1); // 10cm
   ec.setMinClusterSize (30);
   ec.setMaxClusterSize (25000);
 
@@ -153,11 +145,12 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
   planes_avgNormals->is_dense = true;
   planes_avgNormals->points.resize (planes_avgNormals->width * planes_avgNormals->height) ;
 
-
-  // =========loop till inliers left with 15% (thresh) left out================
-  std::cerr << "Start Loop with inlinears: " << inliers->indices.size() << "   Point Thresh: " << thresh << endl;
   int cluster_index = 0;
-  for (size_t idx = 0; inliers->indices.size() > thresh; idx++ ){
+  int thresh = cloud_filtered->points.size()*0.1;
+  // =========loop till inliers left with 10% (thresh) left out================
+  std::cerr << "Start Loop with total points " << cloud_filtered->points.size() << "   Point Thresh: " << thresh << endl;
+
+  for (size_t idx = 0; cloud_filtered->points.size() > thresh; idx++ ){
     // segmentation
     seg.setInputCloud (cloud_filtered);
     seg.segment (*inliers, *coefficients);
@@ -204,13 +197,14 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
       std::string state = getPlaneState( cloud_cluster, planes_avgNormals, cluster_index );
       std::cout << " [cluster " << cluster_index << " ] " << state << std::endl;
       
-      
       viewer.addText3D(state + "_" + std::to_string(cluster_index), cloud_cluster->points[ cloud_cluster->points.size()/2 ], 
         0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(cluster_index));
 
+      //temp to prevent breakdown
+      if (cluster_index== 9) break;
+
       cluster_index++;
       j++;
-
     }
 
     // Extract non-plane returns
@@ -272,34 +266,43 @@ int main (int argc, char** argv){
 
   // find int agument in command line
   if (pcl::console::find_switch (argc, argv, "-i")){
-    int input_idx = pcl::console::find_argument (argc, argv, "-i") + 1;
+    input_idx = pcl::console::find_argument (argc, argv, "-i") + 1;
     inputInt = std::atoi(argv[input_idx]);
-    std::cout << "Input Int arg for '-i' is " << inputInt << std::endl;
   } 
+  std::cout << "Input Int arg for '-i' is " << inputInt << std::endl;
+
 
   // find double agument in command line
   if (pcl::console::find_switch (argc, argv, "-d")){
-    int input_idx2 = pcl::console::find_argument (argc, argv, "-d") + 1;
-    std::stringstream ss( argv[input_idx2] );
-
+    input_idx = pcl::console::find_argument (argc, argv, "-d") + 1;
+    std::stringstream ss( argv[input_idx] );
     if ( !(ss >> input_d))
       std::cout << "Invalid double...\n";
-    std::cout << "Input Double arg for '-d' is " << input_d << std::endl;
   } 
+  std::cout << "Input Double arg for '-d' is " << input_d << std::endl;
 
 
     // find double agument in command line
   if (pcl::console::find_switch (argc, argv, "-x")){
-    int input_idx3 = pcl::console::find_argument (argc, argv, "-x") + 1;
-    std::stringstream ss( argv[input_idx3] );
-
+    input_idx = pcl::console::find_argument (argc, argv, "-x") + 1;
+    std::stringstream ss( argv[input_idx] );
     if ( !(ss >> input_d2))
       std::cout << "Invalid double...\n";
-    std::cout << "Input Double arg for '-d' is " << input_d2 << std::endl;
   } 
+  std::cout << "Input Double arg for '-x' is " << input_d2 << std::endl;
 
 
-  std::cout << " ---------- \n" << std::endl;
+    // find ransac dist double agument in command line
+  if (pcl::console::find_switch (argc, argv, "-r")){
+    input_idx = pcl::console::find_argument (argc, argv, "-r") + 1;
+    std::stringstream ss( argv[input_idx] );
+    if ( !(ss >> ransacDist))
+      std::cout << "Invalid double...\n";
+  } 
+  std::cout << "Input Double arg for '-r' is " << ransacDist << std::endl;
+
+
+  std::cout << " ----------end arg--------- \n" << std::endl;
 
   // Load file | Works with PCD and PLY files
   pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
