@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pictobot/pcl_indoorPlaneSegmentation/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -109,6 +109,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named pc_visualizer
+
+# Build rule for target.
+pc_visualizer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pc_visualizer
+.PHONY : pc_visualizer
+
+# fast build rule for target.
+pc_visualizer/fast:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/build
+.PHONY : pc_visualizer/fast
 
 #=============================================================================
 # Target rules for targets named indoor_planar_segmentation
@@ -177,21 +190,52 @@ indoor_planar_segmentation.cpp.s:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
 .PHONY : indoor_planar_segmentation.cpp.s
 
+pc_visualizer.o: pc_visualizer.cpp.o
+
+.PHONY : pc_visualizer.o
+
+# target to build an object file
+pc_visualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o
+.PHONY : pc_visualizer.cpp.o
+
+pc_visualizer.i: pc_visualizer.cpp.i
+
+.PHONY : pc_visualizer.i
+
+# target to preprocess a source file
+pc_visualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i
+.PHONY : pc_visualizer.cpp.i
+
+pc_visualizer.s: pc_visualizer.cpp.s
+
+.PHONY : pc_visualizer.s
+
+# target to generate assembly for a file
+pc_visualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s
+.PHONY : pc_visualizer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... rebuild_cache"
+	@echo "... pc_visualizer"
 	@echo "... edit_cache"
 	@echo "... indoor_planar_segmentation"
-	@echo "... rebuild_cache"
 	@echo "... getPlaneNormalState.o"
 	@echo "... getPlaneNormalState.i"
 	@echo "... getPlaneNormalState.s"
 	@echo "... indoor_planar_segmentation.o"
 	@echo "... indoor_planar_segmentation.i"
 	@echo "... indoor_planar_segmentation.s"
+	@echo "... pc_visualizer.o"
+	@echo "... pc_visualizer.i"
+	@echo "... pc_visualizer.s"
 .PHONY : help
 
 

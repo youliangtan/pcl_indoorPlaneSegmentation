@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/pictobot/pcl_indoorPlaneSegmentation
 CMAKE_BINARY_DIR = /home/pictobot/pcl_indoorPlaneSegmentation/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/pc_visualizer.dir
+
+# All Build rule for target.
+CMakeFiles/pc_visualizer.dir/all:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/depend
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=4,5 "Built target pc_visualizer"
+.PHONY : CMakeFiles/pc_visualizer.dir/all
+
+# Include target in all.
+all: CMakeFiles/pc_visualizer.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pc_visualizer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pc_visualizer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles 0
+.PHONY : CMakeFiles/pc_visualizer.dir/rule
+
+# Convenience name for target.
+pc_visualizer: CMakeFiles/pc_visualizer.dir/rule
+
+.PHONY : pc_visualizer
+
+# clean rule for target.
+CMakeFiles/pc_visualizer.dir/clean:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/clean
+.PHONY : CMakeFiles/pc_visualizer.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/pc_visualizer.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/indoor_planar_segmentation.dir
 
 # All Build rule for target.

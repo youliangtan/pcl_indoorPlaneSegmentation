@@ -26,7 +26,6 @@ General Sequential Methodolody:
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/kdtree/kdtree.h>
-#include <pcl/features/normal_3d.h>
 #include "getPlaneNormalState.h"
 
 
@@ -53,55 +52,6 @@ showHelp(char * program_name)
 }
 
 
-
-// 0: others, 1: wall, 2: ceiling, 3: floor
-std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals, int index){
-
-  // Create the normal estimation class, and pass the input dataset to it
-  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
-  ne.setInputCloud (plane_cloud);
-
-  // Create an empty kdtree representation, and pass it to the normal estimation object.
-  // Its content will be filled inside the object, based on the given input dataset (as no other search surface is given).
-  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
-  ne.setSearchMethod (tree);
-
-  // Output datasets with init normals var
-  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
-
-  // Use all neighbors in a sphere of radius 3cm
-  ne.setRadiusSearch (input_d);   // or ne.setKSearch();
-  // Compute the features
-  ne.compute (*cloud_normals);
-
-  //find all plane normal vector and output
-  getAverageNormal(cloud_normals, planes_avgNormals, index);
-  // writer.write<pcl::Normal> ("normal_vector.pcd", *cloud_normals, false);
-  std::cout << "avg at func" << planes_avgNormals->points[index] <<std::endl;
-  std::cout << " - [Avg normal] Vector  " << planes_avgNormals->points[index] << std::endl;
-
-  //check cluster index via output
-  // if (index == 6){
-  //   writer.write<pcl::PointXYZ> ("./pcd/output_cluster.pcd", *plane_cloud, false);
-  //   viewer.addPointCloudNormals<pcl::PointXYZ, pcl::Normal> (plane_cloud, cloud_normals, 15, 0.28, "normals");
-  // }      
-
-
-  // return appropriate state
-  float z_vector = planes_avgNormals->points[index].normal_z;
-  if (z_vector > 0.92){ //floor
-    return "floor";//3;
-  }
-  else if (z_vector < -0.92){ //ceiling
-    return "ceiling"; //2;
-  }
-  else if (z_vector < 0.08 && z_vector > -0.08){
-    return "wall";//1;
-  }
-  else{ //others
-    return "others";//0;
-  }
-}
 
 
 // segment to multiple planes then visualizer
@@ -191,7 +141,6 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
       viewer.addPointCloud (cloud_cluster, cluster_color_handler, std::to_string(idx) + "cloud_cluster" + std::to_string(j), v2);
       viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, std::to_string(idx)+ "cloud_cluster" + std::to_string(j));
 
-
       // =================== get normall!!!!!!!!!!!!!!!!! =============
       // get plane normal then get state
       std::string state = getPlaneState( cloud_cluster, planes_avgNormals, cluster_index );
@@ -232,13 +181,7 @@ int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
 } 
 
 
-
-
-
-// This is the main function
-int main (int argc, char** argv){
-
-  // ============ Init ===================
+int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud ){
 
   // Show help
   if (pcl::console::find_switch (argc, argv, "-h") || pcl::console::find_switch (argc, argv, "--help")) {
@@ -252,10 +195,8 @@ int main (int argc, char** argv){
 
   filenames = pcl::console::parse_file_extension_argument (argc, argv, ".ply");
 
-
   if (filenames.size () != 1)  {
     filenames = pcl::console::parse_file_extension_argument (argc, argv, ".pcd");
-
     if (filenames.size () != 1) {
       showHelp (argv[0]);
       return -1;
@@ -300,13 +241,7 @@ int main (int argc, char** argv){
       std::cout << "Invalid double...\n";
   } 
   std::cout << "Input Double arg for '-r' is " << ransacDist << std::endl;
-
-
-  std::cout << " ----------end arg--------- \n" << std::endl;
-
-  // Load file | Works with PCD and PLY files
-  pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
-
+  
   if (file_is_pcd) {
     if (pcl::io::loadPCDFile (argv[filenames[0]], *source_cloud) < 0)  {
       std::cout << "Error loading point cloud " << argv[filenames[0]] << std::endl << std::endl;
@@ -321,11 +256,24 @@ int main (int argc, char** argv){
     }
   }
 
+  std::cout << " ----------end arg--------- \n" << std::endl;
+  return 0;
+}
+
+
+// This is the main function
+int main (int argc, char** argv){
+
+
+  // Load file | Works with PCD and PLY files
+  pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
+  getVarfromArg(argc, argv, source_cloud);
+
   std::cout<< "Reading " << argv[0] << " with points: " << source_cloud->points.size() << std::endl;
 
   // viewer init
   viewer.createViewPort(0.0, 0.0, 0.5, 1.0, v1); // viewer 1
-  viewer.addCoordinateSystem (1.0, "v1_axis", v1);
+  viewer.addCoordinateSystem (1.0, "v1_axtransformPointCloudis", v1);
   viewer.setBackgroundColor(0.05, 0.05, 0.05, v1); 
   viewer.createViewPort(0.5, 0.0, 1.0, 1.0, v2); //viewer 2
   viewer.addCoordinateSystem (1.0, "v2_axis", v2);
