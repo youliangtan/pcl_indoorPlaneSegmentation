@@ -106,7 +106,6 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
 }
 
 
-
 // set boundary height of-axis of ceilign and floor according to threshold in config
 class BoundaryHeight{
 
@@ -357,7 +356,7 @@ int main (int argc, char** argv){
     };
   }
 
-  // ======= OUTPUT TO VISUALIZER ======
+  // ===== OUTPUT TO VISUALIZER ====
   //visualize all planes on viewer 2
   std::cout << "\n - Running Visualizer -" << std::endl;
   for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){

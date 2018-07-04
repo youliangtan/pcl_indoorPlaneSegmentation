@@ -127,3 +127,58 @@ void planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, int
     cloudPlanes->push_back ( plane_struct );
   }
 } 
+
+
+// Manage exception planes (region between each patches)
+int exceptionPlanarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, std::vector<PlaneStruct> *cloudPlanes){
+ 
+  // var and init
+  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
+  pcl::ExtractIndices<pcl::PointXYZ> extract;
+
+  // Create the segmentation object
+  pcl::SACSegmentation<pcl::PointXYZ> seg;
+  pcl::PointIndices::Ptr inliers (new pcl::PointIndices);
+  pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
+  seg.setModelType (pcl::SACMODEL_PLANE);
+  seg.setMethodType (pcl::SAC_RANSAC);
+  seg.setDistanceThreshold (configParam["PlanarSegmentation"]["ransacDist"].asDouble());
+  seg.setOptimizeCoefficients (true);    // Optional
+
+  // create normal pcl type 
+  pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals (new pcl::PointCloud<pcl::Normal>);
+  planes_avgNormals->width = 10; // size!!!!! number of planes in model
+  planes_avgNormals->height = 1;
+  planes_avgNormals->is_dense = true;
+  planes_avgNormals->points.resize (planes_avgNormals->width * planes_avgNormals->height) ;
+  pcl::PointCloud<pcl::PointXYZ>::Ptr planar_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+  // segmentation
+  seg.setInputCloud (cloud_filtered);
+  seg.segment (*inliers, *coefficients);
+  
+  // extract from indics
+  extract.setInputCloud (cloud_filtered);
+  extract.setIndices (inliers);
+  extract.filter (*planar_cloud);
+
+  // clusterize each plane (refer to old code)
+
+  // get plane normal then get state
+  std::string state = getPlaneState( planar_cloud, planes_avgNormals );
+  if (state  == "wall") { 
+    std::cout << "no exception" << std::endl;
+    return 0 ; 
+  } // return wheres nothing 
+  
+  // ======= OUTPUT TO POINTER =========
+  struct PlaneStruct plane_struct;
+  plane_struct.cloud = (boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >) new pcl::PointCloud<pcl::PointXYZ>() ;
+  plane_struct.cloud = planar_cloud;
+  plane_struct.patchNum = -1;
+  plane_struct.planeNum = -1;
+  plane_struct.type = state;
+
+  cloudPlanes->push_back ( plane_struct );
+  return 1;
+} 
