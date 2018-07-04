@@ -51,7 +51,7 @@ int getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::PointClo
   ne.compute (*cloud_normals);
 
   //find all plane normal vector and output
-  getAverageVector(cloud_normals, planes_avgNormals, index);
+  getAverageVector(cloud_normals, planes_avgNormals, 0);
   pcl::PCDWriter writer;
   writer.write<pcl::Normal> ("normal_vector.pcd", *cloud_normals, false);
   writer.write<pcl::Normal> ("plane_normal_vector.pcd", *planes_avgNormals, false);

@@ -26,7 +26,7 @@ General Sequential Methodolody:
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/kdtree/kdtree.h>
-#include "getPlaneNormalState.h"
+#include "planeSegmentation.h"
 
 
 // global

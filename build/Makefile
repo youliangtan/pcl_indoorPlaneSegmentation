@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named indoor_planar_segmentation
-
-# Build rule for target.
-indoor_planar_segmentation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 indoor_planar_segmentation
-.PHONY : indoor_planar_segmentation
-
-# fast build rule for target.
-indoor_planar_segmentation/fast:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
-.PHONY : indoor_planar_segmentation/fast
-
-#=============================================================================
 # Target rules for targets named pc_visualizer
 
 # Build rule for target.
@@ -148,63 +135,6 @@ indoor_planar_segmentation_v2: cmake_check_build_system
 indoor_planar_segmentation_v2/fast:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/build
 .PHONY : indoor_planar_segmentation_v2/fast
-
-getPlaneNormalState.o: getPlaneNormalState.cpp.o
-
-.PHONY : getPlaneNormalState.o
-
-# target to build an object file
-getPlaneNormalState.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.o
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o
-.PHONY : getPlaneNormalState.cpp.o
-
-getPlaneNormalState.i: getPlaneNormalState.cpp.i
-
-.PHONY : getPlaneNormalState.i
-
-# target to preprocess a source file
-getPlaneNormalState.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.i
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.i
-.PHONY : getPlaneNormalState.cpp.i
-
-getPlaneNormalState.s: getPlaneNormalState.cpp.s
-
-.PHONY : getPlaneNormalState.s
-
-# target to generate assembly for a file
-getPlaneNormalState.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/getPlaneNormalState.cpp.s
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.s
-.PHONY : getPlaneNormalState.cpp.s
-
-indoor_planar_segmentation.o: indoor_planar_segmentation.cpp.o
-
-.PHONY : indoor_planar_segmentation.o
-
-# target to build an object file
-indoor_planar_segmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
-.PHONY : indoor_planar_segmentation.cpp.o
-
-indoor_planar_segmentation.i: indoor_planar_segmentation.cpp.i
-
-.PHONY : indoor_planar_segmentation.i
-
-# target to preprocess a source file
-indoor_planar_segmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i
-.PHONY : indoor_planar_segmentation.cpp.i
-
-indoor_planar_segmentation.s: indoor_planar_segmentation.cpp.s
-
-.PHONY : indoor_planar_segmentation.s
-
-# target to generate assembly for a file
-indoor_planar_segmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
-.PHONY : indoor_planar_segmentation.cpp.s
 
 indoor_planar_segmentation_v2.o: indoor_planar_segmentation_v2.cpp.o
 
@@ -260,6 +190,33 @@ pc_visualizer.cpp.s:
 	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s
 .PHONY : pc_visualizer.cpp.s
 
+planeSegmentation.o: planeSegmentation.cpp.o
+
+.PHONY : planeSegmentation.o
+
+# target to build an object file
+planeSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o
+.PHONY : planeSegmentation.cpp.o
+
+planeSegmentation.i: planeSegmentation.cpp.i
+
+.PHONY : planeSegmentation.i
+
+# target to preprocess a source file
+planeSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.i
+.PHONY : planeSegmentation.cpp.i
+
+planeSegmentation.s: planeSegmentation.cpp.s
+
+.PHONY : planeSegmentation.s
+
+# target to generate assembly for a file
+planeSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.s
+.PHONY : planeSegmentation.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,22 +224,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... indoor_planar_segmentation"
 	@echo "... pc_visualizer"
 	@echo "... rebuild_cache"
 	@echo "... indoor_planar_segmentation_v2"
-	@echo "... getPlaneNormalState.o"
-	@echo "... getPlaneNormalState.i"
-	@echo "... getPlaneNormalState.s"
-	@echo "... indoor_planar_segmentation.o"
-	@echo "... indoor_planar_segmentation.i"
-	@echo "... indoor_planar_segmentation.s"
 	@echo "... indoor_planar_segmentation_v2.o"
 	@echo "... indoor_planar_segmentation_v2.i"
 	@echo "... indoor_planar_segmentation_v2.s"
 	@echo "... pc_visualizer.o"
 	@echo "... pc_visualizer.i"
 	@echo "... pc_visualizer.s"
+	@echo "... planeSegmentation.o"
+	@echo "... planeSegmentation.i"
+	@echo "... planeSegmentation.s"
 .PHONY : help
 
 

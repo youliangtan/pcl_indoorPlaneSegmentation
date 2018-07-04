@@ -11,7 +11,7 @@
 		"x": [0.5, 3],
 		"y": [-0.5, 0.5],
 		"z": [-2, 1],
-		"z_Thresh": [0.1, 0.9]	
+		"z_Thresh": [0.05, 0.9]	
 	},
 
 	"Patch":{
@@ -25,7 +25,7 @@
 
 	"PlanarSegmentation":{
 		"ransacDist": 0.025,
-		"cloudFilteredTresh": 0.1
+		"cloudFilteredThresh": 0.1
 
 	}
 }

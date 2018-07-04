@@ -81,40 +81,40 @@ CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o
 CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o
 
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o: CMakeFiles/indoor_planar_segmentation_v2.dir/flags.make
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o: ../getPlaneNormalState.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.cpp
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation_v2.dir/flags.make
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o: ../planeSegmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.cpp > CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.i
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp > CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.i
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/getPlaneNormalState.cpp -o CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.s
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.s
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.requires:
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.requires:
 
-.PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.requires
+.PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.requires
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.provides: CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.requires
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.provides.build
-.PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.provides
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.provides
 
-CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o
+CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o
 
 
 # Object files for target indoor_planar_segmentation_v2
 indoor_planar_segmentation_v2_OBJECTS = \
 "CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o" \
-"CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o"
+"CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o"
 
 # External object files for target indoor_planar_segmentation_v2
 indoor_planar_segmentation_v2_EXTERNAL_OBJECTS =
 
 indoor_planar_segmentation_v2: CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o
-indoor_planar_segmentation_v2: CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o
+indoor_planar_segmentation_v2: CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o
 indoor_planar_segmentation_v2: CMakeFiles/indoor_planar_segmentation_v2.dir/build.make
 indoor_planar_segmentation_v2: /usr/lib/x86_64-linux-gnu/libboost_system.so
 indoor_planar_segmentation_v2: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -306,7 +306,7 @@ CMakeFiles/indoor_planar_segmentation_v2.dir/build: indoor_planar_segmentation_v
 .PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/build
 
 CMakeFiles/indoor_planar_segmentation_v2.dir/requires: CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o.requires
-CMakeFiles/indoor_planar_segmentation_v2.dir/requires: CMakeFiles/indoor_planar_segmentation_v2.dir/getPlaneNormalState.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation_v2.dir/requires: CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o.requires
 
 .PHONY : CMakeFiles/indoor_planar_segmentation_v2.dir/requires
 

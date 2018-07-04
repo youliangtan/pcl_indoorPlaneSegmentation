@@ -29,7 +29,7 @@ General Sequential Methodolody:
 #include <pcl/filters/filter.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/kdtree/kdtree.h>
-#include "getPlaneNormalState.h"
+#include "planeSegmentation.h"
 #include <json/json.h>
 
 
@@ -55,75 +55,6 @@ showHelp(char * program_name)
   std::cout << "-h:  Show this help." << std::endl;
 }
 
-
-
-// segment to multiple planes then visualizer
-int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, int patchNum){
- 
-  // var and init
-  pcl::PointCloud<pcl::PointXYZ>::Ptr planar_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
-  pcl::ExtractIndices<pcl::PointXYZ> extract;
-  pcl::PCDWriter writer;
-  std::cout << " - Running segmentation function for patch " << patchNum << " -" << std::endl;
-
-  // Create the segmentation object
-  pcl::SACSegmentation<pcl::PointXYZ> seg;
-  pcl::PointIndices::Ptr inliers (new pcl::PointIndices);
-  pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
-  seg.setModelType (pcl::SACMODEL_PLANE);
-  seg.setMethodType (pcl::SAC_RANSAC);
-  seg.setDistanceThreshold (configParam["PlanarSegmentation"]["ransacDist"].asDouble());
-  seg.setOptimizeCoefficients (true);    // Optional
-
-  // normal
-  pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals (new pcl::PointCloud<pcl::Normal>);
-  planes_avgNormals->width = 10; // size!!!!! number of planes in model
-  planes_avgNormals->height = 1;
-  planes_avgNormals->is_dense = true;
-  planes_avgNormals->points.resize (planes_avgNormals->width * planes_avgNormals->height) ;
-
-  double threshpercentage = configParam["PlanarSegmentation"]["cloudFilteredTresh"].asDouble();
-  int thresh = cloud_filtered->points.size()*threshpercentage ;
-  // =========loop till inliers left with 10% (thresh) left out================
-  std::cerr << " - Point Thresh: " << thresh << endl;
-
-  for (size_t idx = 0; cloud_filtered->points.size() > thresh; idx++ ){
-    // segmentation
-    seg.setInputCloud (cloud_filtered);
-    seg.segment (*inliers, *coefficients);
-    
-    std::cerr << "Loop "<< idx  << " | Filtered cloud size: " << cloud_filtered->points.size() << std::endl;
-
-    // extract from indics
-    extract.setInputCloud (cloud_filtered);
-    extract.setIndices (inliers);
-    extract.filter (*planar_cloud);
-
-    // clusterize each plane (refer to old code)
-
-    // Extract non-plane returns
-    extract.setNegative (true);
-    extract.filter (*cloud_filtered);
-    extract.setNegative (false);
-    
-    
-    // ======== OUTPUT TO VIEWER ==========
-    // add point cloud to visualizer scene
-    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cluster_color_handler (planar_cloud, 
-      180*(patchNum+1) - idx*30, idx*88 - 22 , 205*patchNum - (idx + 1)*53); //plane colour
-    viewer.addPointCloud (planar_cloud, cluster_color_handler, std::to_string(patchNum) + "planar_cloud" + std::to_string(idx), v2);
-    viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, std::to_string(patchNum)+ "planar_cloud" + std::to_string(idx));
-
-    // =================== get normall!!!!!!!!!!!!!!!!! =============
-    // get plane normal then get state
-    std::string state = getPlaneState( planar_cloud, planes_avgNormals, idx );    
-    viewer.addText3D( state + std::to_string(patchNum) + "_" + std::to_string(idx), planar_cloud->points[ planar_cloud->points.size()/2 ], 
-      0.12, 0.0, 1.0, 0.0, std::to_string(patchNum)+ "cluster_text"+ std::to_string(idx));
-  }
-
-  return 0;
-} 
 
 
 int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud ){
@@ -182,7 +113,7 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
     if (pcl::io::loadPCDFile (argv[filenames[0]], *source_cloud) < 0)  {
       std::cout << "Error loading point cloud " << argv[filenames[0]] << std::endl << std::endl;
       showHelp (argv[0]);
-      return -1;
+      return -1;  
     }
   } else {
     if (pcl::io::loadPLYFile (argv[filenames[0]], *source_cloud) < 0)  {
@@ -195,6 +126,63 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
   std::cout << " ----------end arg--------- \n" << std::endl;
   return 0;
 }
+
+
+
+
+// process exception planes (region between each patches)
+int exceptionPlanarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, std::vector<PlaneStruct> *cloudPlanes){
+ 
+  // var and init
+  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
+  pcl::ExtractIndices<pcl::PointXYZ> extract;
+
+  // Create the segmentation object
+  pcl::SACSegmentation<pcl::PointXYZ> seg;
+  pcl::PointIndices::Ptr inliers (new pcl::PointIndices);
+  pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
+  seg.setModelType (pcl::SACMODEL_PLANE);
+  seg.setMethodType (pcl::SAC_RANSAC);
+  seg.setDistanceThreshold (configParam["PlanarSegmentation"]["ransacDist"].asDouble());
+  seg.setOptimizeCoefficients (true);    // Optional
+
+  // create normal pcl type 
+  pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals (new pcl::PointCloud<pcl::Normal>);
+  planes_avgNormals->width = 10; // size!!!!! number of planes in model
+  planes_avgNormals->height = 1;
+  planes_avgNormals->is_dense = true;
+  planes_avgNormals->points.resize (planes_avgNormals->width * planes_avgNormals->height) ;
+  pcl::PointCloud<pcl::PointXYZ>::Ptr planar_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+  // segmentation
+  seg.setInputCloud (cloud_filtered);
+  seg.segment (*inliers, *coefficients);
+  
+  // extract from indics
+  extract.setInputCloud (cloud_filtered);
+  extract.setIndices (inliers);
+  extract.filter (*planar_cloud);
+
+  // clusterize each plane (refer to old code)
+
+  // get plane normal then get state
+  std::string state = getPlaneState( planar_cloud, planes_avgNormals );
+  if (state  == "wall") { 
+    std::cout << "no exception" << std::endl;
+    return 0 ; 
+  } // return wheres nothing 
+  
+  // ======= OUTPUT TO POINTER =========
+  struct PlaneStruct plane_struct;
+  plane_struct.cloud = (boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >) new pcl::PointCloud<pcl::PointXYZ>() ;
+  plane_struct.cloud = planar_cloud;
+  plane_struct.patchNum = -1;
+  plane_struct.planeNum = -1;
+  plane_struct.type = state;
+
+  cloudPlanes->push_back ( plane_struct );
+  return 1;
+} 
 
 
 // set boundary height of-axis of ceilign and floor according to threshold in config
@@ -314,6 +302,37 @@ class PC2Patches{
       return patch_cloud;
     }
 
+    //get exception patches between each patch
+    pcl::PointCloud<pcl::PointXYZ>::Ptr getExceptionPatch(int upper_patchNum){
+
+      double higher_bound, lower_bound;
+      pcl::PointCloud<pcl::PointXYZ>::Ptr patch_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
+      pcl::ConditionAnd<pcl::PointXYZ>::Ptr range_cond (new pcl::ConditionAnd<pcl::PointXYZ> ());
+      double height_between_patches = ceilingHeight - patchHeight*upper_patchNum;
+      
+      higher_bound = height_between_patches + 0.05;
+      lower_bound = height_between_patches - 0.05;
+
+      // z-axis filtering
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr 
+        (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, lower_bound  )));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr 
+        (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, higher_bound  )));
+
+      // build the filter
+      pcl::ConditionalRemoval<pcl::PointXYZ> condrem;
+      condrem.setCondition (range_cond);
+      condrem.setInputCloud (cloud_filtered);
+      condrem.setKeepOrganized(true);
+      condrem.filter (*patch_cloud);  // apply filter
+
+      //remove nan in pointcloud
+      std::vector<int> indices;
+      pcl::removeNaNFromPointCloud( *patch_cloud, *patch_cloud, indices );
+      return patch_cloud;
+    }
+
+
     //get number of patches in filtered point cloud
     int getNumberOfPatches(){
       double totalHeight = ceilingHeight - floorHeight;
@@ -323,8 +342,6 @@ class PC2Patches{
     }
 
 };
-
-
 
 
 
@@ -388,7 +405,7 @@ int main (int argc, char** argv){
   std::vector < pcl::PointCloud<pcl::PointXYZ>::Ptr > cloudPatches ( numberOfPatches );
   pcl::PointCloud<pcl::PointXYZ>::Ptr patch_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
   std::cout <<  "number of patches "  << numberOfPatches << std::endl;
-  
+
   //loop thru patches
   for (size_t i= 0 ; i< numberOfPatches ; i++){
 
@@ -396,8 +413,7 @@ int main (int argc, char** argv){
     cloudPatches[i] = pc2Patches.getPatch(i);
     std::cout << "cloud patches size: "<< cloudPatches[i]->points.size () << std::endl;
 
-
-
+    // visualizer on viewer 1
     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> patch_color_handler (cloudPatches[i], 23 + i*80, 200 , 223- i*70);
     viewer.addPointCloud (cloudPatches[i], patch_color_handler, "filtered_patch_" + std::to_string(i), v1);
     viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "filtered_patch_" + std::to_string(i));
@@ -405,12 +421,35 @@ int main (int argc, char** argv){
   }
 
   // ===== Planar Segmentation =====
+  std::vector < PlaneStruct > *cloudPlanes = new std::vector<PlaneStruct>(); // declare a vector of PlaneStruct-s  ASK??
   //loop thru the patches for to segment each patch (will multitask nxt time)
   for (size_t i= 0 ; i< numberOfPatches ; i++){
     std::cout << "\n From Main:: Cloud Patch size: "<< cloudPatches[i]->points.size () << std::endl;
-    planarSegmentation( cloudPatches[i], i );
+    planarSegmentation( cloudPatches[i], i , cloudPlanes);
+  }
+  // get exception planes
+  std::cout << "\n - Running Exception plane segmentation -" << std::endl;
+  for (size_t i= 1 ; i< numberOfPatches ; i++){
+    if (exceptionPlanarSegmentation( pc2Patches.getExceptionPatch(i), cloudPlanes ) == 1){ 
+        std::cout << "exception plane is added" << std::endl;
+    };
   }
 
+  // ===== Visualizer ====
+  //visualize all planes on viewer 2
+  std::cout << "\n - Running Visualizer -" << std::endl;
+  for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
+    // ======== OUTPUT TO VIEWER ==========
+    // add point cloud to visualizer scene
+    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cluster_color_handler ( (*cloudPlanes)[i].cloud, 
+      180*i , i*88 - 22 , (i+1)*53); //plane colour
+    viewer.addPointCloud ( (*cloudPlanes)[i].cloud, cluster_color_handler, "planar_cloud" + std::to_string(i), v2);
+    viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, 
+      "planar_cloud" + std::to_string(i));  
+    viewer.addText3D( (*cloudPlanes)[i].type + std::to_string(i) , (*cloudPlanes)[i].cloud->points[ (*cloudPlanes)[i].cloud->points.size() / 2 ], 
+      0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(i));
+    std::cout << (*cloudPlanes)[i].type << i << " with plane size: " << (*cloudPlanes)[i].cloud->points.size() << std::endl;
+  }
 
   viewer.setPosition(800, 400); // Setting visualiser window position
   viewer.setCameraPosition(-5,-5,5,0,0,1);

@@ -53,6 +53,7 @@
         "complex": "cpp",
         "bitset": "cpp",
         "list": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "*.ipp": "cpp"
     }
 }
