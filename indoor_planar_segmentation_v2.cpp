@@ -338,7 +338,6 @@ int main (int argc, char** argv){
     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> patch_color_handler (cloudPatches[i], 23 + i*80, 200 , 223- i*70);
     viewer.addPointCloud (cloudPatches[i], patch_color_handler, "filtered_patch_" + std::to_string(i), v1);
     viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "filtered_patch_" + std::to_string(i));
-    writer.write<pcl::PointXYZ> (std::to_string(i) + "output_patch.pcd", *cloudPatches[i], false);
   }
 
   // ===== Planar Segmentation =====
@@ -370,6 +369,13 @@ int main (int argc, char** argv){
     viewer.addText3D( (*cloudPlanes)[i].type + std::to_string(i) , (*cloudPlanes)[i].cloud->points[ (*cloudPlanes)[i].cloud->points.size() / 2 ], 
       0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(i));
     std::cout << (*cloudPlanes)[i].type << i << " with plane size: " << (*cloudPlanes)[i].cloud->points.size() << std::endl;
+  
+    // std::cout << "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd" << std::endl;
+    // write to output
+    // writer.write<pcl::PointXYZ> ( 
+    //   "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd"
+    //   , *cloudPatches[i], false);
+
   }
 
   viewer.setPosition(800, 400); // Setting visualiser window position
