@@ -370,11 +370,11 @@ int main (int argc, char** argv){
       0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(i));
     std::cout << (*cloudPlanes)[i].type << i << " with plane size: " << (*cloudPlanes)[i].cloud->points.size() << std::endl;
   
-    // std::cout << "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd" << std::endl;
+    std::cout << "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd" << std::endl;
     // write to output
-    // writer.write<pcl::PointXYZ> ( 
-    //   "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd"
-    //   , *cloudPatches[i], false);
+    writer.write<pcl::PointXYZ> ( 
+      "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd"
+      , *(*cloudPlanes)[i].cloud, false);
 
   }
 
