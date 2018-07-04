@@ -32,6 +32,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/vtk-7.1"
+  "/usr/include/jsoncpp"
   "/usr/local/include/pcl-1.8"
   "/usr/local/include/eigen3"
   "/usr/include/ni"

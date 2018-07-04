@@ -52,8 +52,6 @@ showHelp(char * program_name)
 }
 
 
-
-
 // segment to multiple planes then visualizer
 int planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
  
@@ -263,7 +261,6 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
 
 // This is the main function
 int main (int argc, char** argv){
-
 
   // Load file | Works with PCD and PLY files
   pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud (new pcl::PointCloud<pcl::PointXYZ> ());

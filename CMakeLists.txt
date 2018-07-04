@@ -5,6 +5,9 @@ project(pointCloudProject)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 find_package(PCL 1.7 REQUIRED)
+find_package(PkgConfig REQUIRED)
+include_directories("${JSONCPP_INCLUDE_DIRS}")
+link_libraries(${JSONCPP_LIBRARIES})
 
 include_directories(${PCL_INCLUDE_DIRS} include)
 link_directories(${PCL_LIBRARY_DIRS})
@@ -12,10 +15,12 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable (pc_visualizer pc_visualizer.cpp)
 # add_executable (planar_segmentation planar_segmentation.cpp)
+add_executable (indoor_planar_segmentation_v2 indoor_planar_segmentation_v2.cpp getPlaneNormalState.cpp)
 add_executable (indoor_planar_segmentation indoor_planar_segmentation.cpp getPlaneNormalState.cpp)
 # add_executable (concave_hull_2d concave_hull_2d.cpp)
 
 target_link_libraries (pc_visualizer ${PCL_LIBRARIES})
 # target_link_libraries (planar_segmentation ${PCL_LIBRARIES})
 target_link_libraries (indoor_planar_segmentation ${PCL_LIBRARIES})
+target_link_libraries (indoor_planar_segmentation_v2 ${PCL_LIBRARIES} ${JSONCPP_LIBRARIES})
 # target_link_libraries (concave_hull_2d ${PCL_LIBRARIES})

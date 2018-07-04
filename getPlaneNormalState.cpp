@@ -39,21 +39,12 @@ std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::
 
   // Use all neighbors in a sphere of radius 5cm
   ne.setRadiusSearch (0.5);   // or ne.setKSearch();
-  // Compute the features
-  ne.compute (*cloud_normals);
+  ne.compute (*cloud_normals);   // Compute the features
 
   //find all plane normal vector and output
   getAverageNormal(cloud_normals, planes_avgNormals, index);
-  // writer.write<pcl::Normal> ("normal_vector.pcd", *cloud_normals, false);
-  std::cout << "avg at func" << planes_avgNormals->points[index] <<std::endl;
-  std::cout << " - [Avg normal] Vector  " << planes_avgNormals->points[index] << std::endl;
-
-  //check cluster index via output
-  // if (index == 6){
-  //   writer.write<pcl::PointXYZ> ("./pcd/output_cluster.pcd", *plane_cloud, false);
-  //   viewer.addPointCloudNormals<pcl::PointXYZ, pcl::Normal> (plane_cloud, cloud_normals, 15, 0.28, "normals");
-  // }      
-
+  // std::cout << "avg at func" << planes_avgNormals->points[index] <<std::endl;
+  // std::cout << " - [Avg normal] Vector  " << planes_avgNormals->points[index] << std::endl;
 
   // return appropriate state
   float z_vector = planes_avgNormals->points[index].normal_z;
