@@ -1,5 +1,4 @@
 /*
-General Sequential Methodolody:
 1) Input source pcd file and Init
 2) Boundary Filtering
 3) Patch splitting
@@ -105,6 +104,7 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
   std::cout << " ----------end arg--------- \n" << std::endl;
   return 0;
 }
+
 
 
 // set boundary height of-axis of ceilign and floor according to threshold in config
@@ -319,8 +319,7 @@ int main (int argc, char** argv){
 
   pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> filtered_color_handler (filtered_cloud, 223, 23 , 223);
   viewer.addPointCloud (filtered_cloud, filtered_color_handler, "filtered source cloud", v2);
-  viewer.setPoint    // ======== OUTPUT TO VIEWER ==========
-CloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "filtered source cloud");
+  viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "filtered source cloud");
 
 
   // === Spliting of Patches ===
@@ -358,7 +357,7 @@ CloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "fil
     };
   }
 
-  // ====== Visualizer =====
+  // ======= OUTPUT TO VISUALIZER ======
   //visualize all planes on viewer 2
   std::cout << "\n - Running Visualizer -" << std::endl;
   for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
@@ -376,6 +375,7 @@ CloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "fil
 
   viewer.setPosition(800, 400); // Setting visualiser window position
   viewer.setCameraPosition(-5,-5,5,0,0,1);
+
   while (!viewer.wasStopped ()) { // Display the visualiser until 'q' key is pressed
     viewer.spinOnce ();
   }
