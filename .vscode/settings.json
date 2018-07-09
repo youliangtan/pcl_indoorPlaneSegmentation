@@ -54,6 +54,8 @@
         "bitset": "cpp",
         "list": "cpp",
         "iomanip": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
     }
 }

@@ -22,6 +22,8 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/features/normal_3d.h>
 #include <json/json.h>
+#include <pcl/filters/radius_outlier_removal.h>
+
 
 extern Json::Value configParam; // from Json loader
 
@@ -31,21 +33,39 @@ struct PlaneStruct {
   std::string type;
   int patchNum;   
   int planeNum;
+// collision check : Protrusion
 };
 
+// plane Segmentation of Patches
+class PlaneSeg {
+  private:
+    pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals;
+    int index;
+    int planeNum;
+    int patchNum;
 
-// input pcl normals of a point cloud, compute an average normal 
-int getAverageNormal(pcl::PointCloud<pcl::Normal>::Ptr normals, pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals, int idx = 0);
+  protected:    
+    // input pcl normals of a point cloud, compute an average normal 
+    int getAverageNormal(pcl::PointCloud<pcl::Normal>::Ptr normals);
+    // input planar point cloud, obtain string state of a point cloud
+    std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud);
+    // clustering of planes after plane segmentation    
+    void planeClustering(pcl::PointCloud<pcl::PointXYZ>::Ptr planar_cloud, std::vector<PlaneStruct> *cloudPlanes);
 
-// input planar point cloud, obtain string state of a point cloud
-// state: ceiling, floor, wall, others
-std::string getPlaneState(pcl::PointCloud<pcl::PointXYZ>::Ptr plane_cloud, pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals, int index = 0);
+  public:
+    PlaneSeg();
+    // input patch of pointcloud
+    // pushback plane's pointcloud into a vector of PLaneStruct
+    void patchPlanarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, std::vector<PlaneStruct> *cloudPlanes, int patch_num);
+    // Handle to find exception plane (find only one plane for one region)
+    // input pointcloud exception patch
+    // pushback PlaneStruct into cloudPlanes pointer
+    int exceptionPlanarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, std::vector<PlaneStruct> *cloudPlanes);
 
-// input patch of pointcloud
-// pushback plane's pointcloud into a vector of PLaneStruct
-void planarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, int patchNum, std::vector<PlaneStruct> *cloudPlanes);
+};
 
-// Handle to find exception plane (find only one plane for one region)
-// input pointcloud exception patch
-// pushback PlaneStruct into cloudPlanes pointer
-int exceptionPlanarSegmentation (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered, std::vector<PlaneStruct> *cloudPlanes);
+// this is in main cpp
+// filtering
+void outlinerFiltering (pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud);
+
+

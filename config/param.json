@@ -11,21 +11,26 @@
 		"x": [0.5, 3],
 		"y": [-0.5, 0.5],
 		"z": [-2, 1],
-		"z_Thresh": [0.05, 0.9]	
+		"z_Thresh": [0, 0.9]	
 	},
 
 	"Patch":{
 		"height": 0.8
 	},
 
-	"StatisticalOutlierRemoval":{
-		"MeanK": 80,
-		"StdDevThresh": 5.0 
+	"OutlierRemoval":{
+		"Usage": "2 filtering in action, Statistical:SOR; Radius: ROR",
+		"S_MeanK": 80,
+		"S_StdDevThresh": 5.0, 
+		"R_minNeighbours": 6,
+		"R_radius": 0.085
 	},
 
 	"PlanarSegmentation":{
-		"ransacDist": 0.025,
-		"cloudFilteredThresh": 0.1
+		"ransacDist": 0.028,
+		"cloudFilteredThresh": 0.1,
+		"loopThresh": 3,
+		"planePointsThresh": 40
 
 	}
 }

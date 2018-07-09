@@ -55,6 +55,8 @@ pcl/features/normal_3d.h
 -
 json/json.h
 -
+pcl/filters/radius_outlier_removal.h
+-
 
 /home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation_v2.cpp
 planeSegmentation.h
@@ -1730,10 +1732,24 @@ pcl/pcl_macros.h
 pcl/filters/filter_indices.h
 -
 
+/usr/local/include/pcl-1.8/pcl/filters/impl/radius_outlier_removal.hpp
+pcl/filters/radius_outlier_removal.h
+-
+pcl/common/io.h
+-
+
 /usr/local/include/pcl-1.8/pcl/filters/impl/statistical_outlier_removal.hpp
 pcl/filters/statistical_outlier_removal.h
 -
 pcl/common/io.h
+-
+
+/usr/local/include/pcl-1.8/pcl/filters/radius_outlier_removal.h
+pcl/filters/filter_indices.h
+-
+pcl/search/pcl_search.h
+-
+pcl/filters/impl/radius_outlier_removal.hpp
 -
 
 /usr/local/include/pcl-1.8/pcl/filters/statistical_outlier_removal.h

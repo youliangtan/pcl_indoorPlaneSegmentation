@@ -56,7 +56,7 @@ int getVarfromArg(int argc, char** argv, pcl::PointCloud<pcl::PointXYZ>::Ptr sou
       return -1;
     } else {
       file_is_pcd = true;
-    }
+    }  pcl::PointCloud<pcl::Normal>::Ptr planes_avgNormals (new pcl::PointCloud<pcl::Normal>);
   }
 
   // find int agument in command line
@@ -149,8 +149,9 @@ class PC2Patches{
     
 
   public:
-      // Set Point cloud boundary according to config param
+    // Set Point cloud boundary according to config param
     pcl::PointCloud<pcl::PointXYZ>::Ptr setPCBoundary(pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){ // filtered_cloud){
+      
       // build the condition
       cloud_filtered = (boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >) new pcl::PointCloud<pcl::PointXYZ>() ;
 
@@ -265,6 +266,14 @@ class PC2Patches{
 };
 
 
+void outlinerFiltering( pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud ){
+  pcl::RadiusOutlierRemoval<pcl::PointXYZ> outrem;
+  outrem.setInputCloud(filtered_cloud); // build the filter
+  outrem.setMinNeighborsInRadius( configParam["OutlierRemoval"]["R_minNeighbours"].asInt() );
+  outrem.setRadiusSearch ( configParam["OutlierRemoval"]["R_radius"].asDouble() );
+  outrem.filter (*filtered_cloud); 
+}
+
 
 // This is the main function
 int main (int argc, char** argv){
@@ -297,7 +306,7 @@ int main (int argc, char** argv){
   viewer.createViewPort(0.5, 0.0, 1.0, 1.0, v2); //viewer 2
   viewer.addCoordinateSystem (1.0, "v2_axis", v2);
   viewer.setBackgroundColor(0.2, 0.2, 0.2, v2);
-  // add source cloud
+  // add source cloudD
   pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> transformed_cloud_color_handler (transformed_cloud, 255, 255, 255);
   viewer.addPointCloud (transformed_cloud, transformed_cloud_color_handler, "transformed_cloud");
   viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "transformed_cloud");
@@ -309,16 +318,17 @@ int main (int argc, char** argv){
   pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
   filtered_cloud = pc2Patches.setPCBoundary(transformed_cloud);//, filtered_cloud);
   // Create the filtering to remove sparse points
-  pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
-  sor.setInputCloud (filtered_cloud);
-  sor.setMeanK ( configParam["StatisticalOutlierRemoval"]["MeanK"].asInt() );
-  sor.setStddevMulThresh ( configParam["StatisticalOutlierRemoval"]["StdDevThresh"].asDouble() );
-  sor.filter (*filtered_cloud);
-  
+  // pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
+  // sor.setInputCloud (filtered_cloud);
+  // sor.setMeanK ( configParam["OutlierRemoval"]["S_MeanK"].asInt() );
+  // sor.setStddevMulThresh ( configParam["OutlierRemoval"]["S_StdDevThresh"].asDouble() );
+  // sor.filter (*filtered_cloud);
+  //Radius Outlier Removal
+  outlinerFiltering( filtered_cloud );
 
-  pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> filtered_color_handler (filtered_cloud, 223, 23 , 223);
-  viewer.addPointCloud (filtered_cloud, filtered_color_handler, "filtered source cloud", v2);
-  viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "filtered source cloud");
+  // pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> filtered_color_handler (filtered_cloud, 223, 23 , 223);
+  // viewer.addPointCloud (filtered_cloud, filtered_color_handler, "filtered source cloud", v2);
+  // viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "filtered source cloud");
 
 
   // === Spliting of Patches ===
@@ -337,21 +347,22 @@ int main (int argc, char** argv){
     // visualizer on viewer 1
     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> patch_color_handler (cloudPatches[i], 23 + i*80, 200 , 223- i*70);
     viewer.addPointCloud (cloudPatches[i], patch_color_handler, "filtered_patch_" + std::to_string(i), v1);
-    viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "filtered_patch_" + std::to_string(i));
+    viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, "filtered_patch_" + std::to_string(i));
   }
 
   // ===== Planar Segmentation =====
   std::vector < PlaneStruct > *cloudPlanes = new std::vector<PlaneStruct>(); // declare a vector of PlaneStruct-s  ASK??
+  PlaneSeg patch_seg;
   //loop thru the patches for to segment each patch (will multitask nxt time)
   for (size_t i= 0 ; i< numberOfPatches ; i++){
     std::cout << "\n From Main:: Cloud Patch size: "<< cloudPatches[i]->points.size () << std::endl;
-    planarSegmentation( cloudPatches[i], i , cloudPlanes);
+    patch_seg.patchPlanarSegmentation( cloudPatches[i], cloudPlanes, i);
   }
   // get exception planes
   std::cout << "\n - Running Exception plane segmentation -" << std::endl;
   for (size_t i= 1 ; i< numberOfPatches ; i++){
-    if (exceptionPlanarSegmentation( pc2Patches.getExceptionPatch(i), cloudPlanes ) == 1){ 
-        std::cout << "exception plane is added" << std::endl;
+    if (patch_seg.exceptionPlanarSegmentation( pc2Patches.getExceptionPatch(i), cloudPlanes ) == 1){ 
+        std::cout << "exception plane is added with type: " << (*cloudPlanes)[ cloudPlanes->size() - 1 ].type << std::endl;
     };
   }
 
@@ -362,7 +373,7 @@ int main (int argc, char** argv){
 
     // add point cloud to visualizer scene
     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cluster_color_handler ( (*cloudPlanes)[i].cloud, 
-      180*i , i*88 - 22 , (i+1)*53); //plane colour
+      180*(i+1) , i*88 - 22 , (i+1)*53); //plane colour
     viewer.addPointCloud ( (*cloudPlanes)[i].cloud, cluster_color_handler, "planar_cloud" + std::to_string(i), v2);
     viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, 
       "planar_cloud" + std::to_string(i));  
@@ -370,7 +381,7 @@ int main (int argc, char** argv){
       0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(i));
     std::cout << (*cloudPlanes)[i].type << i << " with plane size: " << (*cloudPlanes)[i].cloud->points.size() << std::endl;
   
-    std::cout << "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd" << std::endl;
+    // std::cout << "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd" << std::endl;
     // write to output
     writer.write<pcl::PointXYZ> ( 
       "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd"
