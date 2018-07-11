@@ -18,6 +18,7 @@ Make by `cd .../build`, then `make -j4`
 
 To run the exe files:
 `./indoor_planar_segmentation "pcd_path.pcd"`
+
 To purely visualize Point clouds
 `./pc_visualizer "pcd_path1.pcd" "optional_pcd_path2.pcd"`
 
