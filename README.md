@@ -19,5 +19,5 @@ To purely visualize Point clouds
 ### pcd files
 ALl pcd sample files are located in the `.../pcd` folder. Corresponded sample images with the pcd files are shown in the same folder.
 
-###ROS service packag
+### ROS Service Package
 Please Refer to `.../ros_pkg_srv` folder.
