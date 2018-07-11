@@ -172,5 +172,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/pc_visualizer.dir/DependInfo.cmake"
-  "CMakeFiles/indoor_planar_segmentation_v2.dir/DependInfo.cmake"
+  "CMakeFiles/indoor_planar_segmentation.dir/DependInfo.cmake"
   )

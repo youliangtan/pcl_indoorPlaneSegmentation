@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pictobot/pcl_indoorPlaneSegmentation/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,44 +124,71 @@ pc_visualizer/fast:
 .PHONY : pc_visualizer/fast
 
 #=============================================================================
-# Target rules for targets named indoor_planar_segmentation_v2
+# Target rules for targets named indoor_planar_segmentation
 
 # Build rule for target.
-indoor_planar_segmentation_v2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 indoor_planar_segmentation_v2
-.PHONY : indoor_planar_segmentation_v2
+indoor_planar_segmentation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 indoor_planar_segmentation
+.PHONY : indoor_planar_segmentation
 
 # fast build rule for target.
-indoor_planar_segmentation_v2/fast:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/build
-.PHONY : indoor_planar_segmentation_v2/fast
+indoor_planar_segmentation/fast:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
+.PHONY : indoor_planar_segmentation/fast
 
-indoor_planar_segmentation_v2.o: indoor_planar_segmentation_v2.cpp.o
+indoor_planar_segmentation.o: indoor_planar_segmentation.cpp.o
 
-.PHONY : indoor_planar_segmentation_v2.o
+.PHONY : indoor_planar_segmentation.o
 
 # target to build an object file
-indoor_planar_segmentation_v2.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.o
-.PHONY : indoor_planar_segmentation_v2.cpp.o
+indoor_planar_segmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
+.PHONY : indoor_planar_segmentation.cpp.o
 
-indoor_planar_segmentation_v2.i: indoor_planar_segmentation_v2.cpp.i
+indoor_planar_segmentation.i: indoor_planar_segmentation.cpp.i
 
-.PHONY : indoor_planar_segmentation_v2.i
+.PHONY : indoor_planar_segmentation.i
 
 # target to preprocess a source file
-indoor_planar_segmentation_v2.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.i
-.PHONY : indoor_planar_segmentation_v2.cpp.i
+indoor_planar_segmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i
+.PHONY : indoor_planar_segmentation.cpp.i
 
-indoor_planar_segmentation_v2.s: indoor_planar_segmentation_v2.cpp.s
+indoor_planar_segmentation.s: indoor_planar_segmentation.cpp.s
 
-.PHONY : indoor_planar_segmentation_v2.s
+.PHONY : indoor_planar_segmentation.s
 
 # target to generate assembly for a file
-indoor_planar_segmentation_v2.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/indoor_planar_segmentation_v2.cpp.s
-.PHONY : indoor_planar_segmentation_v2.cpp.s
+indoor_planar_segmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
+.PHONY : indoor_planar_segmentation.cpp.s
+
+patchSegmentation.o: patchSegmentation.cpp.o
+
+.PHONY : patchSegmentation.o
+
+# target to build an object file
+patchSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o
+.PHONY : patchSegmentation.cpp.o
+
+patchSegmentation.i: patchSegmentation.cpp.i
+
+.PHONY : patchSegmentation.i
+
+# target to preprocess a source file
+patchSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.i
+.PHONY : patchSegmentation.cpp.i
+
+patchSegmentation.s: patchSegmentation.cpp.s
+
+.PHONY : patchSegmentation.s
+
+# target to generate assembly for a file
+patchSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.s
+.PHONY : patchSegmentation.cpp.s
 
 pc_visualizer.o: pc_visualizer.cpp.o
 
@@ -196,7 +223,7 @@ planeSegmentation.o: planeSegmentation.cpp.o
 
 # target to build an object file
 planeSegmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.o
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o
 .PHONY : planeSegmentation.cpp.o
 
 planeSegmentation.i: planeSegmentation.cpp.i
@@ -205,7 +232,7 @@ planeSegmentation.i: planeSegmentation.cpp.i
 
 # target to preprocess a source file
 planeSegmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.i
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.i
 .PHONY : planeSegmentation.cpp.i
 
 planeSegmentation.s: planeSegmentation.cpp.s
@@ -214,8 +241,35 @@ planeSegmentation.s: planeSegmentation.cpp.s
 
 # target to generate assembly for a file
 planeSegmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation_v2.dir/build.make CMakeFiles/indoor_planar_segmentation_v2.dir/planeSegmentation.cpp.s
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.s
 .PHONY : planeSegmentation.cpp.s
+
+pointcloudSegmentation.o: pointcloudSegmentation.cpp.o
+
+.PHONY : pointcloudSegmentation.o
+
+# target to build an object file
+pointcloudSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o
+.PHONY : pointcloudSegmentation.cpp.o
+
+pointcloudSegmentation.i: pointcloudSegmentation.cpp.i
+
+.PHONY : pointcloudSegmentation.i
+
+# target to preprocess a source file
+pointcloudSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.i
+.PHONY : pointcloudSegmentation.cpp.i
+
+pointcloudSegmentation.s: pointcloudSegmentation.cpp.s
+
+.PHONY : pointcloudSegmentation.s
+
+# target to generate assembly for a file
+pointcloudSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.s
+.PHONY : pointcloudSegmentation.cpp.s
 
 # Help Target
 help:
@@ -223,19 +277,25 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... pc_visualizer"
 	@echo "... rebuild_cache"
-	@echo "... indoor_planar_segmentation_v2"
-	@echo "... indoor_planar_segmentation_v2.o"
-	@echo "... indoor_planar_segmentation_v2.i"
-	@echo "... indoor_planar_segmentation_v2.s"
+	@echo "... pc_visualizer"
+	@echo "... edit_cache"
+	@echo "... indoor_planar_segmentation"
+	@echo "... indoor_planar_segmentation.o"
+	@echo "... indoor_planar_segmentation.i"
+	@echo "... indoor_planar_segmentation.s"
+	@echo "... patchSegmentation.o"
+	@echo "... patchSegmentation.i"
+	@echo "... patchSegmentation.s"
 	@echo "... pc_visualizer.o"
 	@echo "... pc_visualizer.i"
 	@echo "... pc_visualizer.s"
 	@echo "... planeSegmentation.o"
 	@echo "... planeSegmentation.i"
 	@echo "... planeSegmentation.s"
+	@echo "... pointcloudSegmentation.o"
+	@echo "... pointcloudSegmentation.i"
+	@echo "... pointcloudSegmentation.s"
 .PHONY : help
 
 

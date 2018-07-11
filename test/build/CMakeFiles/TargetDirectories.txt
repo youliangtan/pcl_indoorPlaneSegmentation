@@ -1,5 +1,0 @@
-/home/pictobot/pcl_test/build/CMakeFiles/edit_cache.dir
-/home/pictobot/pcl_test/build/CMakeFiles/rebuild_cache.dir
-/home/pictobot/pcl_test/build/CMakeFiles/normalEstimation.dir
-/home/pictobot/pcl_test/build/CMakeFiles/supervoxel_clustering.dir
-/home/pictobot/pcl_test/build/CMakeFiles/cluster_extraction.dir
