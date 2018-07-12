@@ -47,6 +47,7 @@ class SegmentationVisualizer{
     //output vector of PlaneStruct to viewer 2 
     void addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes ){
       
+
       std::cout << "\n - Running Visualizer -" << std::endl;
       for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
 
@@ -74,6 +75,7 @@ class SegmentationVisualizer{
       while (!viewer.wasStopped ()) { // Display the visualiser until 'q' key is pressed
         viewer.spinOnce ();
       }
+      viewer.close();
     }
 };
 

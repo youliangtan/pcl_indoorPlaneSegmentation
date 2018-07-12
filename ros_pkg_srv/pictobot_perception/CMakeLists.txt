@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 set (CMAKE_CXX_STANDARD 11)
 
-project(pictobot_perception_service)
+project(pictobot_perception)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # Get the information about this package's buildtime dependencies
@@ -63,8 +63,8 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable(waypointsGeneration_server src/waypointsGeneration_server.cpp src/pointcloudSegmentation.cpp src/planeSegmentation.cpp src/patchSegmentation.cpp)
 target_link_libraries(waypointsGeneration_server ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${JSONCPP_LIBRARIES} )
-add_dependencies(waypointsGeneration_server pictobot_perception_service_gencpp)
+add_dependencies(waypointsGeneration_server pictobot_perception_gencpp)
 
 add_executable(waypointsGeneration_client src/waypointsGeneration_client.cpp  )
 target_link_libraries(waypointsGeneration_client ${catkin_LIBRARIES})
-add_dependencies(waypointsGeneration_client pictobot_perception_service_gencpp)
+add_dependencies(waypointsGeneration_client pictobot_perception_gencpp)

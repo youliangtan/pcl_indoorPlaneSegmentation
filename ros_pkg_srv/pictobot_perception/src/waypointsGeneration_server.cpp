@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "pictobot_perception_service/WaypointsGeneration.h"
+#include "pictobot_perception/WaypointsGeneration.h"
 // segmentation header
 #include "pointcloudSegmentation.h"
 
@@ -58,8 +58,8 @@ void loadPCD(std::string file_path, pcl::PointCloud<pcl::PointXYZ>::Ptr source_c
 
 
 // call back for server function
-bool service_callback(pictobot_perception_service::WaypointsGeneration::Request  &req,
-                        pictobot_perception_service::WaypointsGeneration::Response &res){
+bool service_callback(pictobot_perception::WaypointsGeneration::Request  &req,
+                        pictobot_perception::WaypointsGeneration::Response &res){
 
   // res.pose_array = req.pcd_path;
   ROS_INFO("request: path=%s", req.pcd_path.c_str() );

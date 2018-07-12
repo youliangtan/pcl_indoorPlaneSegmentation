@@ -1,4 +1,4 @@
-# pictobot_perception_service
+# pictobot_perception
 ROS PKG SERVICE
 
 ## Introduction
@@ -23,11 +23,11 @@ catkin_make -j4
 
 The built exe files will be constructed in `~/catkin_ws/devel/lib`. Use rosrun to run the package.
 
->Run Server: `rosrun pictobot_perception_service waypointsGeneration_server`
+>Run Server: `rosrun pictobot_perception waypointsGeneration_server`
 
->Run Client: `rosrun pictobot_perception_service waypointsGeneration_client  'input_pcd_path.pcd'`
+>Run Client: `rosrun pictobot_perception waypointsGeneration_client  'input_pcd_path.pcd'`
 
 A visualizer viewer will be shown by the server, and way points will be returned to client.
 
 
-** note: the the pakage has the same source file in `.../src` and `.../ros_pkg_srv/picto_perception_service/src`
+** note: the the pakage has the same source file in `.../src` and `.../ros_pkg_srv/picto_perception/src`

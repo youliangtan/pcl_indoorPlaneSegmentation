@@ -1,10 +1,9 @@
 #include "ros/ros.h"
-#include "pictobot_perception_service/WaypointsGeneration.h"
+#include "pictobot_perception/WaypointsGeneration.h"
 
 #include <geometry_msgs/PoseArray.h>
 #include <geometry_msgs/Pose.h>
 #include <cstdlib>
-
 
 
 int main(int argc, char **argv)
@@ -17,8 +16,8 @@ int main(int argc, char **argv)
   }
 
   ros::NodeHandle n;
-  ros::ServiceClient client = n.serviceClient<pictobot_perception_service::WaypointsGeneration>("waypointsGeneration_service");
-  pictobot_perception_service::WaypointsGeneration srv;
+  ros::ServiceClient client = n.serviceClient<pictobot_perception::WaypointsGeneration>("waypointsGeneration_service");
+  pictobot_perception::WaypointsGeneration srv;
   srv.request.pcd_path = argv[1];
 
   std::cout << "Input Path: " << argv[1] << std::endl;
