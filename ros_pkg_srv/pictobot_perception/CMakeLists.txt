@@ -26,7 +26,8 @@ add_service_files(
 
 add_message_files(
   FILES
-  Num.msg
+  PathTrace.msg
+  PathTraceArray.msg
 )
 
 ## Generate added messages and services with any dependencies listed here
@@ -40,13 +41,12 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES PointCloudReceiver
-  CATKIN_DEPENDS roscpp rospy sensor_msgs std_msgs geometry_msgs
+  CATKIN_DEPENDS roscpp rospy sensor_msgs std_msgs geometry_msgs pcl_conversions
 #  DEPENDS system_lib
 )
 
 pkg_check_modules(JSONCPP jsoncpp)
 include_directories("${JSONCPP_INCLUDE_DIRS}")
-
 link_libraries(${JSONCPP_LIBRARIES})
 
 # include_directories(${JSONCPP_INCLUDE_DIRS})
@@ -66,5 +66,5 @@ target_link_libraries(waypointsGeneration_server ${catkin_LIBRARIES} ${PCL_LIBRA
 add_dependencies(waypointsGeneration_server pictobot_perception_gencpp)
 
 add_executable(waypointsGeneration_client src/waypointsGeneration_client.cpp  )
-target_link_libraries(waypointsGeneration_client ${catkin_LIBRARIES})
+target_link_libraries(waypointsGeneration_client ${catkin_LIBRARIES} ${PCL_LIBRARIES} )
 add_dependencies(waypointsGeneration_client pictobot_perception_gencpp)

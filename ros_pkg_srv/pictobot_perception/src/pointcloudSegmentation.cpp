@@ -47,7 +47,6 @@ class SegmentationVisualizer{
     //output vector of PlaneStruct to viewer 2 
     void addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes ){
       
-
       std::cout << "\n - Running Visualizer -" << std::endl;
       for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
 
@@ -75,15 +74,30 @@ class SegmentationVisualizer{
       while (!viewer.wasStopped ()) { // Display the visualiser until 'q' key is pressed
         viewer.spinOnce ();
       }
-      viewer.close();
     }
 };
 
 
 void readConfigFile(std::string path){
-  std::ifstream config_doc(path, std::ifstream::binary); //load json config file
-  config_doc >> configParam;
-  std::cout << "== Config file: param.json is loaded ==" << std::endl;
+  try {
+    std::ifstream config_doc(path, std::ifstream::binary); //load json config file
+    config_doc >> configParam;
+    std::cout << "== Config file: param.json is loaded ==" << std::endl;
+  }
+  catch (...) { 
+    std::cout << "JSON Exception: Change to backup path "<< std::endl; 
+    path = "config/param.json"; //try second path << on ros service
+    try {
+      std::ifstream config_doc(path, std::ifstream::binary); //load json config file
+      config_doc >> configParam;
+      std::cout << "== Config file: param.json is loaded ==" << std::endl;
+    }
+    catch (...) { 
+      std::cout << "ERROR ON READING JSON!!! "<< std::endl; 
+      std::cout << "Check if Json path is " << path << std::endl; 
+      exit(0);
+    }
+  }
 }
 
 
@@ -102,6 +116,7 @@ void outlinerFiltering( pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud ){
   outrem.setRadiusSearch ( configParam["OutlierRemoval"]["R_radius"].asDouble() );
   outrem.filter (*filtered_cloud); 
 }
+
 
 // input pointcloud
 // function will segment and visualize the segmentation

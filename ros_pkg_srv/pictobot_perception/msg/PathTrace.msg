@@ -1,0 +1,4 @@
+geometry_msgs/Vector3 start_point
+geometry_msgs/Vector3 end_point
+geometry_msgs/Vector3 normal_vector
+geometry_msgs/Vector3 trace_vector

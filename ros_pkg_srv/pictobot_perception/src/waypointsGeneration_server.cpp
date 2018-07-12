@@ -3,9 +3,15 @@
 // segmentation header
 #include "pointcloudSegmentation.h"
 
+#include <pcl_conversions/pcl_conversions.h>
+#include <pcl/conversions.h>
+
+#include <geometry_msgs/PoseArray.h>
+#include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseArray.h>
 #include <geometry_msgs/Pose.h>
 #include <Eigen/Geometry> 
+#include <unistd.h>
 
 
 // global pose array 
@@ -46,16 +52,6 @@ void showHelp(std::string program_name){
   std::cout << "-h:  Show this help." << std::endl;
 }
 
-// load input pcd file
-void loadPCD(std::string file_path, pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud){
-  if (pcl::io::loadPCDFile (file_path, *source_cloud) < 0)  {
-    std::cout << "Error loading point cloud " << file_path << std::endl << std::endl;
-    showHelp (file_path);
-    exit(0); 
-  }
-  std::cout << "Reading .pcd file " << file_path << " with points:  " << source_cloud->points.size() << std::endl;
-}  
-
 
 // call back for server function
 bool service_callback(pictobot_perception::WaypointsGeneration::Request  &req,
@@ -66,7 +62,9 @@ bool service_callback(pictobot_perception::WaypointsGeneration::Request  &req,
 
   // segmentation portion
   pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud (new pcl::PointCloud<pcl::PointXYZ> ());
-  loadPCD(req.pcd_path, source_cloud);
+  // loadPCD(req.pcd_path, source_cloud);
+  pcl::fromROSMsg( req.point_cloud, *source_cloud);
+  std::cout << "Msg with points:  " << source_cloud->points.size() << std::endl;
   main_PointCloudSegmentation( source_cloud );
 
   // create poseArray Block
@@ -86,6 +84,7 @@ int main(int argc, char **argv)
 
   ros::ServiceServer service = n.advertiseService("waypointsGeneration_service", service_callback);
   ROS_INFO("Ready to generate pose array.");
+
   ros::spin();
 
   return 0;

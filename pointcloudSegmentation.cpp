@@ -47,7 +47,6 @@ class SegmentationVisualizer{
     //output vector of PlaneStruct to viewer 2 
     void addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes ){
       
-
       std::cout << "\n - Running Visualizer -" << std::endl;
       for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
 
@@ -75,7 +74,6 @@ class SegmentationVisualizer{
       while (!viewer.wasStopped ()) { // Display the visualiser until 'q' key is pressed
         viewer.spinOnce ();
       }
-      viewer.close();
     }
 };
 
@@ -91,7 +89,7 @@ void readConfigFile(std::string path){
 void outlinerFiltering( pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud ){
   
   // pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
-  // sor.setInputCloud (filtered_cloud);
+    // sor.setInputCloud (filtered_cloud);
   // sor.setMeanK ( configParam["OutlierRemoval"]["S_MeanK"].asInt() );
   // sor.setStddevMulThresh ( configParam["OutlierRemoval"]["S_StdDevThresh"].asDouble() );
   // sor.filter (*filtered_cloud);
@@ -102,6 +100,7 @@ void outlinerFiltering( pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud ){
   outrem.setRadiusSearch ( configParam["OutlierRemoval"]["R_radius"].asDouble() );
   outrem.filter (*filtered_cloud); 
 }
+
 
 // input pointcloud
 // function will segment and visualize the segmentation
