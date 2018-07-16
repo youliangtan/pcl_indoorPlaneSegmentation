@@ -32,5 +32,9 @@
 		"loopThresh": 3,
 		"planePointsThresh": 40
 
+	},
+
+	"PclViewer":{
+		"EnablePlaneSeg": 1
 	}
 }

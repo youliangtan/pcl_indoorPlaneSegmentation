@@ -57,116 +57,194 @@ include CMakeFiles/indoor_planar_segmentation.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/indoor_planar_segmentation.dir/flags.make
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o: ../indoor_planar_segmentation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o: ../src/indoor_planar_segmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/indoor_planar_segmentation.cpp
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/indoor_planar_segmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.i
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/indoor_planar_segmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.s
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.requires:
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.requires:
 
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.requires
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.requires
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.requires
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.provides.build
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.provides
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.provides
 
-CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
-
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o: ../pointcloudSegmentation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/pointcloudSegmentation.cpp
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/pointcloudSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.i
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/pointcloudSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.s
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.requires:
-
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.requires
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.requires
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.provides.build
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.provides
-
-CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o
+CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o
 
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o: ../planeSegmentation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o: ../src/pointcloudSegmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.cpp
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.i
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.i
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.s
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.s
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.requires:
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.requires:
 
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.requires
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.requires
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.requires
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.provides.build
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.provides
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.provides
 
-CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o
+CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o
 
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o: ../patchSegmentation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/patchSegmentation.cpp
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o: ../src/planeSegmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/planeSegmentation.cpp
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/patchSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.i
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/planeSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.i
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/patchSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.s
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/planeSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.s
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.requires:
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.requires:
 
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.requires
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.requires
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.requires
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.provides.build
-.PHONY : CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.provides
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.provides
 
-CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o
+CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o
+
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o: ../src/patchSegmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/patchSegmentation.cpp
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/patchSegmentation.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.i
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/patchSegmentation.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.s
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.requires:
+
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.requires
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.provides
+
+CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o
+
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o: ../src/ceilPath.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/ceilPath.cpp
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/ceilPath.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.i
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/ceilPath.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.s
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.requires:
+
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.requires
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.provides
+
+CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o
+
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o: ../src/wallPath.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.i
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.s
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.requires:
+
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.requires
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.provides
+
+CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o
+
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o: CMakeFiles/indoor_planar_segmentation.dir/flags.make
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o: ../src/pathIntegrate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/pathIntegrate.cpp
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/pathIntegrate.cpp > CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.i
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/pathIntegrate.cpp -o CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.s
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.requires:
+
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.requires
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.provides: CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.requires
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.provides.build
+.PHONY : CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.provides
+
+CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.provides.build: CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o
 
 
 # Object files for target indoor_planar_segmentation
 indoor_planar_segmentation_OBJECTS = \
-"CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o" \
-"CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o" \
-"CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o" \
-"CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o"
+"CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o" \
+"CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o"
 
 # External object files for target indoor_planar_segmentation
 indoor_planar_segmentation_EXTERNAL_OBJECTS =
 
-indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
-indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o
-indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o
-indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o
+indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o
 indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/build.make
 indoor_planar_segmentation: /usr/lib/x86_64-linux-gnu/libboost_system.so
 indoor_planar_segmentation: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -349,7 +427,7 @@ indoor_planar_segmentation: /usr/local/lib/libvtkCommonTransforms-7.1.so.1
 indoor_planar_segmentation: /usr/local/lib/libvtkCommonMath-7.1.so.1
 indoor_planar_segmentation: /usr/local/lib/libvtkCommonCore-7.1.so.1
 indoor_planar_segmentation: CMakeFiles/indoor_planar_segmentation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable indoor_planar_segmentation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable indoor_planar_segmentation"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/indoor_planar_segmentation.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -357,10 +435,13 @@ CMakeFiles/indoor_planar_segmentation.dir/build: indoor_planar_segmentation
 
 .PHONY : CMakeFiles/indoor_planar_segmentation.dir/build
 
-CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o.requires
-CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o.requires
-CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o.requires
-CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o.requires
+CMakeFiles/indoor_planar_segmentation.dir/requires: CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o.requires
 
 .PHONY : CMakeFiles/indoor_planar_segmentation.dir/requires
 

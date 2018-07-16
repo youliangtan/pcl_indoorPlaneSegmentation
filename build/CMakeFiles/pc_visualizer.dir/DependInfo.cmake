@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pictobot/pcl_indoorPlaneSegmentation/pc_visualizer.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/pc_visualizer.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -36,7 +36,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/pcl-1.8"
   "/usr/local/include/eigen3"
   "/usr/include/ni"
-  "../include"
+  "../src/include"
   "/usr/local/include"
   )
 

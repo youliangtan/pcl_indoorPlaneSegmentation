@@ -4,10 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pictobot/pcl_indoorPlaneSegmentation/indoor_planar_segmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o"
-  "/home/pictobot/pcl_indoorPlaneSegmentation/patchSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o"
-  "/home/pictobot/pcl_indoorPlaneSegmentation/planeSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o"
-  "/home/pictobot/pcl_indoorPlaneSegmentation/pointcloudSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/ceilPath.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/indoor_planar_segmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/patchSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/pathIntegrate.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/planeSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -39,7 +42,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/pcl-1.8"
   "/usr/local/include/eigen3"
   "/usr/include/ni"
-  "../include"
+  "../src/include"
   "/usr/local/include"
   )
 

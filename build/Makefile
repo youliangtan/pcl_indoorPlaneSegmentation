@@ -136,140 +136,221 @@ indoor_planar_segmentation/fast:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/build
 .PHONY : indoor_planar_segmentation/fast
 
-indoor_planar_segmentation.o: indoor_planar_segmentation.cpp.o
+src/ceilPath.o: src/ceilPath.cpp.o
 
-.PHONY : indoor_planar_segmentation.o
-
-# target to build an object file
-indoor_planar_segmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.o
-.PHONY : indoor_planar_segmentation.cpp.o
-
-indoor_planar_segmentation.i: indoor_planar_segmentation.cpp.i
-
-.PHONY : indoor_planar_segmentation.i
-
-# target to preprocess a source file
-indoor_planar_segmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.i
-.PHONY : indoor_planar_segmentation.cpp.i
-
-indoor_planar_segmentation.s: indoor_planar_segmentation.cpp.s
-
-.PHONY : indoor_planar_segmentation.s
-
-# target to generate assembly for a file
-indoor_planar_segmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/indoor_planar_segmentation.cpp.s
-.PHONY : indoor_planar_segmentation.cpp.s
-
-patchSegmentation.o: patchSegmentation.cpp.o
-
-.PHONY : patchSegmentation.o
+.PHONY : src/ceilPath.o
 
 # target to build an object file
-patchSegmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.o
-.PHONY : patchSegmentation.cpp.o
+src/ceilPath.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o
+.PHONY : src/ceilPath.cpp.o
 
-patchSegmentation.i: patchSegmentation.cpp.i
+src/ceilPath.i: src/ceilPath.cpp.i
 
-.PHONY : patchSegmentation.i
+.PHONY : src/ceilPath.i
 
 # target to preprocess a source file
-patchSegmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.i
-.PHONY : patchSegmentation.cpp.i
+src/ceilPath.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.i
+.PHONY : src/ceilPath.cpp.i
 
-patchSegmentation.s: patchSegmentation.cpp.s
+src/ceilPath.s: src/ceilPath.cpp.s
 
-.PHONY : patchSegmentation.s
+.PHONY : src/ceilPath.s
 
 # target to generate assembly for a file
-patchSegmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/patchSegmentation.cpp.s
-.PHONY : patchSegmentation.cpp.s
+src/ceilPath.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.s
+.PHONY : src/ceilPath.cpp.s
 
-pc_visualizer.o: pc_visualizer.cpp.o
+src/indoor_planar_segmentation.o: src/indoor_planar_segmentation.cpp.o
 
-.PHONY : pc_visualizer.o
+.PHONY : src/indoor_planar_segmentation.o
 
 # target to build an object file
-pc_visualizer.cpp.o:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o
-.PHONY : pc_visualizer.cpp.o
+src/indoor_planar_segmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.o
+.PHONY : src/indoor_planar_segmentation.cpp.o
 
-pc_visualizer.i: pc_visualizer.cpp.i
+src/indoor_planar_segmentation.i: src/indoor_planar_segmentation.cpp.i
 
-.PHONY : pc_visualizer.i
+.PHONY : src/indoor_planar_segmentation.i
 
 # target to preprocess a source file
-pc_visualizer.cpp.i:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i
-.PHONY : pc_visualizer.cpp.i
+src/indoor_planar_segmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.i
+.PHONY : src/indoor_planar_segmentation.cpp.i
 
-pc_visualizer.s: pc_visualizer.cpp.s
+src/indoor_planar_segmentation.s: src/indoor_planar_segmentation.cpp.s
 
-.PHONY : pc_visualizer.s
+.PHONY : src/indoor_planar_segmentation.s
 
 # target to generate assembly for a file
-pc_visualizer.cpp.s:
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s
-.PHONY : pc_visualizer.cpp.s
+src/indoor_planar_segmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/indoor_planar_segmentation.cpp.s
+.PHONY : src/indoor_planar_segmentation.cpp.s
 
-planeSegmentation.o: planeSegmentation.cpp.o
+src/patchSegmentation.o: src/patchSegmentation.cpp.o
 
-.PHONY : planeSegmentation.o
+.PHONY : src/patchSegmentation.o
 
 # target to build an object file
-planeSegmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.o
-.PHONY : planeSegmentation.cpp.o
+src/patchSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.o
+.PHONY : src/patchSegmentation.cpp.o
 
-planeSegmentation.i: planeSegmentation.cpp.i
+src/patchSegmentation.i: src/patchSegmentation.cpp.i
 
-.PHONY : planeSegmentation.i
+.PHONY : src/patchSegmentation.i
 
 # target to preprocess a source file
-planeSegmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.i
-.PHONY : planeSegmentation.cpp.i
+src/patchSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.i
+.PHONY : src/patchSegmentation.cpp.i
 
-planeSegmentation.s: planeSegmentation.cpp.s
+src/patchSegmentation.s: src/patchSegmentation.cpp.s
 
-.PHONY : planeSegmentation.s
+.PHONY : src/patchSegmentation.s
 
 # target to generate assembly for a file
-planeSegmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/planeSegmentation.cpp.s
-.PHONY : planeSegmentation.cpp.s
+src/patchSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/patchSegmentation.cpp.s
+.PHONY : src/patchSegmentation.cpp.s
 
-pointcloudSegmentation.o: pointcloudSegmentation.cpp.o
+src/pathIntegrate.o: src/pathIntegrate.cpp.o
 
-.PHONY : pointcloudSegmentation.o
+.PHONY : src/pathIntegrate.o
 
 # target to build an object file
-pointcloudSegmentation.cpp.o:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.o
-.PHONY : pointcloudSegmentation.cpp.o
+src/pathIntegrate.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o
+.PHONY : src/pathIntegrate.cpp.o
 
-pointcloudSegmentation.i: pointcloudSegmentation.cpp.i
+src/pathIntegrate.i: src/pathIntegrate.cpp.i
 
-.PHONY : pointcloudSegmentation.i
+.PHONY : src/pathIntegrate.i
 
 # target to preprocess a source file
-pointcloudSegmentation.cpp.i:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.i
-.PHONY : pointcloudSegmentation.cpp.i
+src/pathIntegrate.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.i
+.PHONY : src/pathIntegrate.cpp.i
 
-pointcloudSegmentation.s: pointcloudSegmentation.cpp.s
+src/pathIntegrate.s: src/pathIntegrate.cpp.s
 
-.PHONY : pointcloudSegmentation.s
+.PHONY : src/pathIntegrate.s
 
 # target to generate assembly for a file
-pointcloudSegmentation.cpp.s:
-	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/pointcloudSegmentation.cpp.s
-.PHONY : pointcloudSegmentation.cpp.s
+src/pathIntegrate.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.s
+.PHONY : src/pathIntegrate.cpp.s
+
+src/pc_visualizer.o: src/pc_visualizer.cpp.o
+
+.PHONY : src/pc_visualizer.o
+
+# target to build an object file
+src/pc_visualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o
+.PHONY : src/pc_visualizer.cpp.o
+
+src/pc_visualizer.i: src/pc_visualizer.cpp.i
+
+.PHONY : src/pc_visualizer.i
+
+# target to preprocess a source file
+src/pc_visualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.i
+.PHONY : src/pc_visualizer.cpp.i
+
+src/pc_visualizer.s: src/pc_visualizer.cpp.s
+
+.PHONY : src/pc_visualizer.s
+
+# target to generate assembly for a file
+src/pc_visualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.s
+.PHONY : src/pc_visualizer.cpp.s
+
+src/planeSegmentation.o: src/planeSegmentation.cpp.o
+
+.PHONY : src/planeSegmentation.o
+
+# target to build an object file
+src/planeSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o
+.PHONY : src/planeSegmentation.cpp.o
+
+src/planeSegmentation.i: src/planeSegmentation.cpp.i
+
+.PHONY : src/planeSegmentation.i
+
+# target to preprocess a source file
+src/planeSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.i
+.PHONY : src/planeSegmentation.cpp.i
+
+src/planeSegmentation.s: src/planeSegmentation.cpp.s
+
+.PHONY : src/planeSegmentation.s
+
+# target to generate assembly for a file
+src/planeSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.s
+.PHONY : src/planeSegmentation.cpp.s
+
+src/pointcloudSegmentation.o: src/pointcloudSegmentation.cpp.o
+
+.PHONY : src/pointcloudSegmentation.o
+
+# target to build an object file
+src/pointcloudSegmentation.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o
+.PHONY : src/pointcloudSegmentation.cpp.o
+
+src/pointcloudSegmentation.i: src/pointcloudSegmentation.cpp.i
+
+.PHONY : src/pointcloudSegmentation.i
+
+# target to preprocess a source file
+src/pointcloudSegmentation.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.i
+.PHONY : src/pointcloudSegmentation.cpp.i
+
+src/pointcloudSegmentation.s: src/pointcloudSegmentation.cpp.s
+
+.PHONY : src/pointcloudSegmentation.s
+
+# target to generate assembly for a file
+src/pointcloudSegmentation.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.s
+.PHONY : src/pointcloudSegmentation.cpp.s
+
+src/wallPath.o: src/wallPath.cpp.o
+
+.PHONY : src/wallPath.o
+
+# target to build an object file
+src/wallPath.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o
+.PHONY : src/wallPath.cpp.o
+
+src/wallPath.i: src/wallPath.cpp.i
+
+.PHONY : src/wallPath.i
+
+# target to preprocess a source file
+src/wallPath.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.i
+.PHONY : src/wallPath.cpp.i
+
+src/wallPath.s: src/wallPath.cpp.s
+
+.PHONY : src/wallPath.s
+
+# target to generate assembly for a file
+src/wallPath.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.s
+.PHONY : src/wallPath.cpp.s
 
 # Help Target
 help:
@@ -281,21 +362,30 @@ help:
 	@echo "... pc_visualizer"
 	@echo "... edit_cache"
 	@echo "... indoor_planar_segmentation"
-	@echo "... indoor_planar_segmentation.o"
-	@echo "... indoor_planar_segmentation.i"
-	@echo "... indoor_planar_segmentation.s"
-	@echo "... patchSegmentation.o"
-	@echo "... patchSegmentation.i"
-	@echo "... patchSegmentation.s"
-	@echo "... pc_visualizer.o"
-	@echo "... pc_visualizer.i"
-	@echo "... pc_visualizer.s"
-	@echo "... planeSegmentation.o"
-	@echo "... planeSegmentation.i"
-	@echo "... planeSegmentation.s"
-	@echo "... pointcloudSegmentation.o"
-	@echo "... pointcloudSegmentation.i"
-	@echo "... pointcloudSegmentation.s"
+	@echo "... src/ceilPath.o"
+	@echo "... src/ceilPath.i"
+	@echo "... src/ceilPath.s"
+	@echo "... src/indoor_planar_segmentation.o"
+	@echo "... src/indoor_planar_segmentation.i"
+	@echo "... src/indoor_planar_segmentation.s"
+	@echo "... src/patchSegmentation.o"
+	@echo "... src/patchSegmentation.i"
+	@echo "... src/patchSegmentation.s"
+	@echo "... src/pathIntegrate.o"
+	@echo "... src/pathIntegrate.i"
+	@echo "... src/pathIntegrate.s"
+	@echo "... src/pc_visualizer.o"
+	@echo "... src/pc_visualizer.i"
+	@echo "... src/pc_visualizer.s"
+	@echo "... src/planeSegmentation.o"
+	@echo "... src/planeSegmentation.i"
+	@echo "... src/planeSegmentation.s"
+	@echo "... src/pointcloudSegmentation.o"
+	@echo "... src/pointcloudSegmentation.i"
+	@echo "... src/pointcloudSegmentation.s"
+	@echo "... src/wallPath.o"
+	@echo "... src/wallPath.i"
+	@echo "... src/wallPath.s"
 .PHONY : help
 
 

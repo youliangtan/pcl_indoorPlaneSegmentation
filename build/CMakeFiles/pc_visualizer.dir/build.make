@@ -57,38 +57,38 @@ include CMakeFiles/pc_visualizer.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/pc_visualizer.dir/flags.make
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o: CMakeFiles/pc_visualizer.dir/flags.make
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o: ../pc_visualizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/pc_visualizer.cpp
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o: CMakeFiles/pc_visualizer.dir/flags.make
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o: ../src/pc_visualizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o -c /home/pictobot/pcl_indoorPlaneSegmentation/src/pc_visualizer.cpp
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/pc_visualizer.cpp > CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.i
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pictobot/pcl_indoorPlaneSegmentation/src/pc_visualizer.cpp > CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.i
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/pc_visualizer.cpp -o CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.s
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pictobot/pcl_indoorPlaneSegmentation/src/pc_visualizer.cpp -o CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.s
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.requires:
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.requires:
 
-.PHONY : CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.requires
+.PHONY : CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.requires
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.provides: CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.provides.build
-.PHONY : CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.provides
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.provides: CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pc_visualizer.dir/build.make CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.provides.build
+.PHONY : CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.provides
 
-CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.provides.build: CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o
+CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.provides.build: CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o
 
 
 # Object files for target pc_visualizer
 pc_visualizer_OBJECTS = \
-"CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o"
+"CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o"
 
 # External object files for target pc_visualizer
 pc_visualizer_EXTERNAL_OBJECTS =
 
-pc_visualizer: CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o
+pc_visualizer: CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o
 pc_visualizer: CMakeFiles/pc_visualizer.dir/build.make
 pc_visualizer: /usr/lib/x86_64-linux-gnu/libboost_system.so
 pc_visualizer: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -279,7 +279,7 @@ CMakeFiles/pc_visualizer.dir/build: pc_visualizer
 
 .PHONY : CMakeFiles/pc_visualizer.dir/build
 
-CMakeFiles/pc_visualizer.dir/requires: CMakeFiles/pc_visualizer.dir/pc_visualizer.cpp.o.requires
+CMakeFiles/pc_visualizer.dir/requires: CMakeFiles/pc_visualizer.dir/src/pc_visualizer.cpp.o.requires
 
 .PHONY : CMakeFiles/pc_visualizer.dir/requires
 

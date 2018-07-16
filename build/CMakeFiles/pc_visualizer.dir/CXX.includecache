@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pictobot/pcl_indoorPlaneSegmentation/pc_visualizer.cpp
+/home/pictobot/pcl_indoorPlaneSegmentation/src/pc_visualizer.cpp
 iostream
 -
 pcl/io/pcd_io.h
