@@ -7,77 +7,6 @@
 Json::Value configParam; // from Json loader
 
 
-// PC visualizer
-class SegmentationVisualizer{
-
-  pcl::visualization::PCLVisualizer viewer;
-  pcl::PCDWriter writer; //init
-  int v1, v2;
-
-  public:
-
-    SegmentationVisualizer( ){
-      viewer.setWindowName ( "Segmention Visualization" );
-      v1 = 1; // viewer port num
-      v2 = 2;
-      viewer.createViewPort(0.0, 0.0, 0.5, 1.0, v1); // viewer 1
-      viewer.createViewPort(0.5, 0.0, 1.0, 1.0, v2); //viewer 2  
-      viewer.addCoordinateSystem (1.0, "v1_transformPointCloud", v1);
-      viewer.setBackgroundColor(0.05, 0.05, 0.05, v1); 
-      viewer.addCoordinateSystem (1.0, "v2_axis", v2);
-      viewer.setBackgroundColor(0.2, 0.2, 0.2, v2);
-    }
-
-    // view cloud as white for 2 viewers
-    void addSource(pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud ){
-      pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cloud_color_handler (source_cloud, 255, 255, 255);
-      viewer.addPointCloud (source_cloud, cloud_color_handler, "source_cloud");
-      viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "source_cloud");
-      viewer.addText("Pointcloud Plane Segmentation", 100, 10, "=')");
-    }
-
-    // visualizer single patch in viewer 2
-    void addPatch(pcl::PointCloud<pcl::PointXYZ>::Ptr cloudPatch, int index ){
-      std::cout << "cloud patches size: "<< cloudPatch->points.size () << std::endl;
-      pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> patch_color_handler (cloudPatch, 23 + index*80, 200 , 223- index*70);
-      viewer.addPointCloud (cloudPatch, patch_color_handler, "filtered_patch_" + std::to_string(index), v1);
-      viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, "filtered_patch_" + std::to_string(index));
-    }
-
-    //output vector of PlaneStruct to viewer 2 
-    void addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes ){
-      
-      std::cout << "\n - Running Visualizer -" << std::endl;
-      for (size_t i= 0 ; i< cloudPlanes->size() ; i++ ){
-
-        // add point cloud to visualizer scene
-        pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cluster_color_handler ( (*cloudPlanes)[i].cloud, 
-          180*(i+1) , i*88 - 22 , (i+1)*53); //plane colour
-        viewer.addPointCloud ( (*cloudPlanes)[i].cloud, cluster_color_handler, "planar_cloud" + std::to_string(i), v2);
-        viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 4, 
-          "planar_cloud" + std::to_string(i));  
-        viewer.addText3D( (*cloudPlanes)[i].type + std::to_string(i) , (*cloudPlanes)[i].cloud->points[ (*cloudPlanes)[i].cloud->points.size() / 2 ], 
-          0.12, 0.0, 1.0, 0.0, "cluster_text"+ std::to_string(i));
-        std::cout << (*cloudPlanes)[i].type << i << " with plane size: " << (*cloudPlanes)[i].cloud->points.size() << std::endl;
-      
-        // write to output
-        // writer.write<pcl::PointXYZ> ( 
-          // "../output/" + (*cloudPlanes)[i].type + "_p" + std::to_string((*cloudPlanes)[i].patchNum) + "_" + std::to_string((*cloudPlanes)[i].planeNum) + ".pcd"
-          // , *(*cloudPlanes)[i].cloud, false);
-      }
-    }
-
-    // run viewer to visualize previous added pointclouds
-    void runViewer(){
-      viewer.setPosition(800, 400); // Setting visualiser window position
-      viewer.setCameraPosition(-5,-5,5,0,0,1);
-      while (!viewer.wasStopped ()) { // Display the visualiser until 'q' key is pressed
-        viewer.spinOnce ();
-      }
-    }
-};
-
-
 void readConfigFile(std::string path){
   try {
     std::ifstream config_doc(path, std::ifstream::binary); //load json config file
@@ -124,7 +53,7 @@ void outlinerFiltering( pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud ){
 
 // input pointcloud
 // function will segment and visualize the segmentation
-int main_PointCloudSegmentation(  pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud, std::vector < PlaneStruct > *cloudPlanes ){
+int PointCloudSegmentation(  pcl::PointCloud<pcl::PointXYZ>::Ptr source_cloud, std::vector < PlaneStruct > *cloudPlanes, PCVisualizer &seg_viewer ){
 
   // read config file
   readConfigFile("../config/param.json");
@@ -142,7 +71,7 @@ int main_PointCloudSegmentation(  pcl::PointCloud<pcl::PointXYZ>::Ptr source_clo
   pcl::transformPointCloud (*source_cloud, *transformed_cloud, transform);
 
   // add source cloud
-  SegmentationVisualizer seg_viewer;
+  // PCVisualizer seg_viewer;
   seg_viewer.addSource(transformed_cloud);
   
   // ==== Filtering ====
@@ -182,9 +111,8 @@ int main_PointCloudSegmentation(  pcl::PointCloud<pcl::PointXYZ>::Ptr source_clo
 
   // output to visualizer or writer
   seg_viewer.addPlaneStruct( cloudPlanes );
-  if (configParam["PclViewer"]["EnablePlaneSeg"].asInt() == 1){
-    seg_viewer.runViewer();
-  }
+  // seg_viewer.runViewer();
+
 
   std::cout << "cloud size " << cloudPlanes->size() << std::endl;
 

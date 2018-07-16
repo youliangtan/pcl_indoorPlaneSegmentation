@@ -1,14 +1,9 @@
 #include "paintPathPlanning.h"
 
-void pathIntegrate(std::vector<PlaneStruct> input_patches, int patch_size, std::vector<std::vector<PathTrace> > &pathTraces){
+void pathIntegrate(std::vector<PlaneStruct> input_patches, int patch_size, std::vector<std::vector<PathTrace> > &pathTraces, PCVisualizer &path_viewer){
 
-    pcl::PointCloud<pcl::PointXYZ>::Ptr whole_cloud (new pcl::PointCloud<pcl::PointXYZ> ()); //visualization purpose
     std::vector<pcl::PointXYZ> whole_waypoints; //visualization purpose
     std::vector<pcl::PointXYZ> whole_wallpoints;    //visualization purpose
-
-    for (size_t i = 0; i < input_patches.size(); i++){
-        *whole_cloud += *(input_patches[i].cloud);
-    }
 
     for(size_t j = 0; j < patch_size; j++){
 
@@ -131,34 +126,7 @@ void pathIntegrate(std::vector<PlaneStruct> input_patches, int patch_size, std::
 
     std::cerr << "Num of ways: " << pathTraces.size() << std::endl;
 
-    pcl::visualization::PCLVisualizer viewer ("Patch viewing");
-    viewer.setBackgroundColor (0, 0, 0);
-    viewer.addCoordinateSystem (1.0);
-    viewer.initCameraParameters ();
-    viewer.addPointCloud<pcl::PointXYZ> (whole_cloud, "whole_cloud");
-    viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 1, 1, 1, "whole_cloud");
-
-    for (size_t i = 0; i < whole_waypoints.size(); i++){
-        std::ostringstream corner_name;
-        corner_name << "waypoint_" << i;
-        viewer.addSphere(whole_waypoints[i], 0.03, 0, 255, 0, corner_name.str());
-    }
-
-    for (size_t i = 0; i < whole_wallpoints.size(); i++){
-        std::ostringstream corner_name;
-        corner_name << "wallpoint_" << i;
-        viewer.addSphere(whole_wallpoints[i], 0.03, 0, 0, 255, corner_name.str());
-    }
-
-    for (size_t i = 0; i < whole_wallpoints.size(); i++){
-        std::ostringstream arrow_name;
-        arrow_name << "arrow_" << i;
-        viewer.addArrow(whole_wallpoints[i], whole_waypoints[i], 0, 0, 155, false, arrow_name.str());
-    }
-
-    while (!viewer.wasStopped ())
-    {
-        viewer.spinOnce(100);
-    }
+    //visualization
+    path_viewer.addWayPoints( whole_waypoints, whole_wallpoints);
 
 }

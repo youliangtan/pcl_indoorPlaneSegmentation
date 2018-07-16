@@ -325,6 +325,33 @@ src/pointcloudSegmentation.cpp.s:
 	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.s
 .PHONY : src/pointcloudSegmentation.cpp.s
 
+src/visualizer.o: src/visualizer.cpp.o
+
+.PHONY : src/visualizer.o
+
+# target to build an object file
+src/visualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/visualizer.cpp.o
+.PHONY : src/visualizer.cpp.o
+
+src/visualizer.i: src/visualizer.cpp.i
+
+.PHONY : src/visualizer.i
+
+# target to preprocess a source file
+src/visualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/visualizer.cpp.i
+.PHONY : src/visualizer.cpp.i
+
+src/visualizer.s: src/visualizer.cpp.s
+
+.PHONY : src/visualizer.s
+
+# target to generate assembly for a file
+src/visualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/indoor_planar_segmentation.dir/build.make CMakeFiles/indoor_planar_segmentation.dir/src/visualizer.cpp.s
+.PHONY : src/visualizer.cpp.s
+
 src/wallPath.o: src/wallPath.cpp.o
 
 .PHONY : src/wallPath.o
@@ -383,6 +410,9 @@ help:
 	@echo "... src/pointcloudSegmentation.o"
 	@echo "... src/pointcloudSegmentation.i"
 	@echo "... src/pointcloudSegmentation.s"
+	@echo "... src/visualizer.o"
+	@echo "... src/visualizer.i"
+	@echo "... src/visualizer.s"
 	@echo "... src/wallPath.o"
 	@echo "... src/wallPath.i"
 	@echo "... src/wallPath.s"

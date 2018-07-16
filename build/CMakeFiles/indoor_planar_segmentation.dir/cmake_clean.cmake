@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/indoor_planar_segmentation.dir/src/ceilPath.cpp.o"
   "CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o"
   "CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o"
+  "CMakeFiles/indoor_planar_segmentation.dir/src/visualizer.cpp.o"
   "indoor_planar_segmentation.pdb"
   "indoor_planar_segmentation"
 )

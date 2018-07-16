@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pictobot/pcl_indoorPlaneSegmentation/src/pathIntegrate.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/pathIntegrate.cpp.o"
   "/home/pictobot/pcl_indoorPlaneSegmentation/src/planeSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/planeSegmentation.cpp.o"
   "/home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/pointcloudSegmentation.cpp.o"
+  "/home/pictobot/pcl_indoorPlaneSegmentation/src/visualizer.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/visualizer.cpp.o"
   "/home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp" "/home/pictobot/pcl_indoorPlaneSegmentation/build/CMakeFiles/indoor_planar_segmentation.dir/src/wallPath.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -42,7 +43,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/pcl-1.8"
   "/usr/local/include/eigen3"
   "/usr/include/ni"
-  "../src/include"
+  "../include"
   "/usr/local/include"
   )
 

@@ -83,8 +83,9 @@ int main (int argc, char** argv){
   getVarfromArg(argc, argv, source_cloud);
   
   // run segmentation
+  PCVisualizer pcl_viewer;
   std::vector < PlaneStruct > *cloudPlanes = new std::vector<PlaneStruct>();
-  int patchSize = main_PointCloudSegmentation( source_cloud, cloudPlanes );
+  int patchSize = PointCloudSegmentation( source_cloud, cloudPlanes, pcl_viewer );
   
   // run path generation
   std::cout << "\n\n============= Path Generation =============" << std::endl;
@@ -92,13 +93,14 @@ int main (int argc, char** argv){
   std::cout << "cloud size " << cloudPlanes->size() << std::endl;
   std::cout << "patch size " << patchSize << std::endl;
   
-  pathIntegrate(*cloudPlanes, patchSize, path_traces);
+  pathIntegrate(*cloudPlanes, patchSize, path_traces, pcl_viewer);
 
+  if (configParam["PclViewer"]["EnablePlaneSeg"].asInt() == 1){
+    pcl_viewer.runViewer();
+  }
   std::cout << "============= END =============" << std::endl;
 
 }
-
-
 
 
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../src/include/paintPathPlanning.h
+../include/paintPathPlanning.h
 iostream
 -
 vector
@@ -58,9 +58,11 @@ pcl/filters/model_outlier_removal.h
 pcl/filters/uniform_sampling.h
 -
 struct.h
-../src/include/struct.h
+../include/struct.h
+visualizer.h
+../include/visualizer.h
 
-../src/include/patchSegmentation.h
+../include/patchSegmentation.h
 iostream
 -
 string
@@ -104,9 +106,9 @@ pcl/features/normal_3d.h
 json/json.h
 -
 struct.h
-../src/include/struct.h
+../include/struct.h
 
-../src/include/planeSegmentation.h
+../include/planeSegmentation.h
 iostream
 -
 string
@@ -158,9 +160,9 @@ json/json.h
 pcl/filters/radius_outlier_removal.h
 -
 struct.h
-../src/include/struct.h
+../include/struct.h
 
-../src/include/pointcloudSegmentation.h
+../include/pointcloudSegmentation.h
 iostream
 -
 string
@@ -168,6 +170,8 @@ string
 sstream
 -
 fstream
+-
+json/json.h
 -
 pcl/io/pcd_io.h
 -
@@ -202,13 +206,49 @@ pcl/io/pcd_io.h
 pcl/features/normal_3d.h
 -
 struct.h
-../src/include/struct.h
+../include/struct.h
+visualizer.h
+../include/visualizer.h
 
-../src/include/struct.h
+../include/struct.h
 pcl/point_cloud.h
 -
 pcl/point_types.h
 -
+
+../include/visualizer.h
+iostream
+-
+string
+-
+sstream
+-
+fstream
+-
+pcl/io/pcd_io.h
+-
+pcl/io/ply_io.h
+-
+pcl/point_cloud.h
+-
+pcl/console/parse.h
+-
+pcl/ModelCoefficients.h
+-
+pcl/point_types.h
+-
+pcl/sample_consensus/method_types.h
+-
+pcl/sample_consensus/model_types.h
+-
+pcl/io/pcd_io.h
+-
+pcl/features/normal_3d.h
+-
+pcl/visualization/pcl_visualizer.h
+-
+struct.h
+../include/struct.h
 
 /home/pictobot/pcl_indoorPlaneSegmentation/src/ceilPath.cpp
 paintPathPlanning.h
@@ -241,6 +281,10 @@ patchSegmentation.h
 /home/pictobot/pcl_indoorPlaneSegmentation/src/patchSegmentation.h
 pointcloudSegmentation.h
 /home/pictobot/pcl_indoorPlaneSegmentation/src/pointcloudSegmentation.h
+
+/home/pictobot/pcl_indoorPlaneSegmentation/src/visualizer.cpp
+visualizer.h
+/home/pictobot/pcl_indoorPlaneSegmentation/src/visualizer.h
 
 /home/pictobot/pcl_indoorPlaneSegmentation/src/wallPath.cpp
 paintPathPlanning.h
