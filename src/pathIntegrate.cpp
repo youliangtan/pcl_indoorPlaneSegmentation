@@ -127,6 +127,6 @@ void pathIntegrate(std::vector<PlaneStruct> input_patches, int patch_size, std::
     std::cerr << "Num of ways: " << pathTraces.size() << std::endl;
 
     //visualization
-    path_viewer.addWayPoints( whole_waypoints, whole_wallpoints);
+    path_viewer.addWayPoints( whole_waypoints, whole_wallpoints, pathTraces);
 
 }

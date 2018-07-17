@@ -49,25 +49,48 @@ void PCVisualizer::addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes ){
 }
 
 // add waypoints to viewer 1
-void PCVisualizer::addWayPoints( std::vector<pcl::PointXYZ> whole_waypoints, std::vector<pcl::PointXYZ> whole_wallpoints){
+//void PCVisualizer::addWayPoints( std::vector<pcl::PointXYZ> whole_waypoints, std::vector<pcl::PointXYZ> whole_wallpoints){
 
-    for (size_t i = 0; i < whole_waypoints.size(); i++){
-        std::ostringstream corner_name;
-        corner_name << "waypoint_" << i;
-        viewer.addSphere(whole_waypoints[i], 0.03, 0, 255, 0, corner_name.str());
+//    for (size_t i = 0; i < whole_waypoints.size(); i++){
+//        std::ostringstream corner_name;
+//        corner_name << "waypoint_" << i;
+//        viewer.addSphere(whole_waypoints[i], 0.03, 0, 255, 0, corner_name.str());
+//    }
+//    for (size_t i = 0; i < whole_wallpoints.size(); i++){
+//        std::ostringstream corner_name;
+//        corner_name << "wallpoint_" << i;
+//        viewer.addSphere(whole_wallpoints[i], 0.03, 0, 0, 255, corner_name.str());
+//    }
+//    for (size_t i = 0; i < whole_wallpoints.size(); i++){
+//        std::ostringstream arrow_name;
+//        arrow_name << "arrow_" << i;
+//        viewer.addArrow(whole_wallpoints[i], whole_waypoints[i], 0, 0, 155, false, arrow_name.str());
+//    }
+//}
+void PCVisualizer::addWayPoints( std::vector<pcl::PointXYZ> whole_waypoints, std::vector<pcl::PointXYZ> whole_wallpoints,
+                                 std::vector<std::vector<PathTrace> > path_traces){
+    for (size_t i = 0; i < path_traces.size(); i++){
+        for (size_t j = 0; j < path_traces[i].size(); j++){
+            std::ostringstream start_name;
+            start_name << "p" << i << "start" << j;
+            viewer.addSphere(cvtEigen2PclXYZ(path_traces[i][j].start_point), 0.03, 0, 0, 255, start_name.str());
+
+            std::ostringstream end_name;
+            end_name << "p" << i << "end" << j;
+            viewer.addSphere(cvtEigen2PclXYZ(path_traces[i][j].end_point), 0.03, 255, 0, 0, end_name.str());
+
+            std::ostringstream path_name;
+            path_name << "p" << i << "path" << j;
+            viewer.addArrow(cvtEigen2PclXYZ(path_traces[i][j].end_point), cvtEigen2PclXYZ(path_traces[i][j].start_point), 0, 155, 155, false, path_name.str());
+        }
     }
-    for (size_t i = 0; i < whole_wallpoints.size(); i++){
-        std::ostringstream corner_name;
-        corner_name << "wallpoint_" << i;
-        viewer.addSphere(whole_wallpoints[i], 0.03, 0, 0, 255, corner_name.str());
-    }
+
     for (size_t i = 0; i < whole_wallpoints.size(); i++){
         std::ostringstream arrow_name;
         arrow_name << "arrow_" << i;
         viewer.addArrow(whole_wallpoints[i], whole_waypoints[i], 0, 0, 155, false, arrow_name.str());
     }
 }
-
 
 // run viewer to visualize previous added pointclouds
 void PCVisualizer::runViewer(){
@@ -79,4 +102,13 @@ void PCVisualizer::runViewer(){
     }
     
 }
+
+pcl::PointXYZ PCVisualizer::cvtEigen2PclXYZ(Eigen::Vector3f vector){
+    pcl::PointXYZ point;
+    point.x = vector[0];
+    point.y = vector[1];
+    point.z = vector[2];
+    return point;
+}
+
 

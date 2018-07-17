@@ -116,25 +116,25 @@ void CeilPath::getWaypoints()
     /*Identify the endpoints of the line*/
     pcl::PointXYZ min_endpt, max_endpt;
     lineEndPointCompute(*line_clouds, 'y', min_endpt, max_endpt);
-    edge_end1 = min_endpt;
-    edge_end2 = max_endpt;
+    edge_end1 = max_endpt;
+    edge_end2 = min_endpt;
 
     /*Painting path position*/
-    pcl::PointXYZ start_pt, end_pt;
-    start_pt.x = min_endpt.x - paint_dir[0] * edge_paint_dis_;
-    start_pt.y = min_endpt.y - paint_dir[1] * edge_paint_dis_;
-    start_pt.z = min_endpt.z - paint_dir[2] * edge_paint_dis_;
-    end_pt.x = max_endpt.x - paint_dir[0] * edge_paint_dis_;
-    end_pt.y = max_endpt.y - paint_dir[1] * edge_paint_dis_;
-    end_pt.z = max_endpt.z - paint_dir[2] * edge_paint_dis_;
-    std::cout << "Start point: " << start_pt << std::endl;
-    std::cout << "End point: " << end_pt << std::endl;
-    start_point = start_pt;
-    end_point = end_pt;
+    pcl::PointXYZ min_pt, max_pt;
+    min_pt.x = min_endpt.x - paint_dir[0] * edge_paint_dis_;
+    min_pt.y = min_endpt.y - paint_dir[1] * edge_paint_dis_;
+    min_pt.z = min_endpt.z - paint_dir[2] * edge_paint_dis_;
+    max_pt.x = max_endpt.x - paint_dir[0] * edge_paint_dis_;
+    max_pt.y = max_endpt.y - paint_dir[1] * edge_paint_dis_;
+    max_pt.z = max_endpt.z - paint_dir[2] * edge_paint_dis_;
+    std::cout << "Start point: " << max_pt << std::endl;
+    std::cout << "End point: " << min_pt << std::endl;
+    start_point = max_pt;
+    end_point = min_pt;
 
-    waypoints.push_back(start_pt);
-    waypoints.push_back(end_pt);
-    trace_vector << end_pt.x-start_pt.x, end_pt.y - start_pt.y, end_pt.z-start_pt.z;
+    waypoints.push_back(max_pt);
+    waypoints.push_back(min_pt);
+    trace_vector << min_pt.x-max_pt.x, min_pt.y - max_pt.y, min_pt.z-max_pt.z;
     trace_vector.normalize();
 
     //Remove the edge and update the wall

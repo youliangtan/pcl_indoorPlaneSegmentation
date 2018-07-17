@@ -45,10 +45,13 @@ class PCVisualizer{
     void addPlaneStruct( std::vector < PlaneStruct > *cloudPlanes );
 
     // way point wall point arrow visualizer
-    void addWayPoints( std::vector<pcl::PointXYZ> whole_waypoints, std::vector<pcl::PointXYZ> whole_wallpoints);
+    void addWayPoints( std::vector<pcl::PointXYZ> whole_waypoints, std::vector<pcl::PointXYZ> whole_wallpoints, std::vector<std::vector<PathTrace> > path_traces);
 
     // run viewer to visualize previous added pointclouds
     void runViewer();
+
+    //data conversion
+    pcl::PointXYZ cvtEigen2PclXYZ(Eigen::Vector3f vector);
 };
 
 
