@@ -1,4 +1,11 @@
 /*
+*Create By Tan You Liang, Under Transforma Project
+*Jul 2018, CopyRight
+*Acknowledge before using this code
+*/
+
+/*
+Steps in this process:
 1) Input source pcd file and Init
 2) Boundary Filtering
 3) Patch splitting
