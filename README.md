@@ -5,6 +5,8 @@ Some pcl project... =')
 
 This PCL perception tool is used to identify target plane for a semi autonomous painting robot. Potential planes within working distance will be identified, then further classifided to their type. The pointcloud will then be stored in a vector of struct for further used. A visualizer is used to visualized the segmentation result.
 
+** For robot motion waypoint generation,  please refer to the `ros service package` below.
+
 ### Example 1
 ![alt text](/documentation/example1.png?)
 
@@ -28,4 +30,6 @@ ALl pcd sample files are located in the `.../pcd` folder. Corresponded sample im
 
 
 ## ROS Service Package
-Please Refer to `.../ros_pkg_srv` folder.
+The package here consist of UR5 Waypoints generation for painting robot's motion planning. The points are generated line by by line along the segmented planes, represent in Cartesian space. In this package the WaypointGeneration ros service will send the generated waypoints to moveit to execute the motion planning.
+
+Please Refer to `.../ros_pkg_srv` folder. Theres a useful readme.md file in it.
