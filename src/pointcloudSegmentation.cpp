@@ -1,3 +1,9 @@
+/*
+*Create By Tan You Liang, Under Transforma Project
+*Jul 2018, CopyRight
+*Acknowledge before using this code
+*/
+
 
 #include "planeSegmentation.h"
 #include "patchSegmentation.h"
